@@ -166,26 +166,26 @@
         <ol>
             <li>Un aéroport/gare/port est identifié par trois lettres uniques à chaque aéroport:<br><br>
                 context Infrastructure inv: <br>
-                self.nom.size() = 3 and self.nom.isUnique()</li><br>
+                self.id.size() = 3 and  self -> forAll( i1, i2 | i1 <> i2 implies i1.id<> i2.id )</li><br>
             
             <li>La partie alphabétique de l'ID d'un vol est unique à chaque compagnie et la partie numérique est unique à
                 chaque vol au sein de la même compagnie: <br><br>
-                context Vol inv: <br><br>
+                context Compagnie inv: <br><br>
                 #Les deux premiers caractères d'un ID de vol doivent être des lettres<br>
-                self.id.substring(1,2).isAlpha()<br>
+                self.vol.id.substring(1,2).isAlpha()<br>
                 and <br><br>
 
                 #Le reste des caractères d'un ID de vol doivent être des chiffres<br>
-                self.id.substring(3, self.id.size()).isNumeric()<br>
+                self.vol.id.substring(3, self.vol.id.size()).isNumeric()<br>
                 and<br><br>
                 #Les deux premiers caractères de l'ID de vol doivent correspondre à l'ID de la compagnie <br>
-                self.id.substring(1, 2) = self.compagnie.id<br>
+                self.vol.id.substring(1, 2) = self.id<br>
                 and<br><br>
                 #La partie alphabétique de l'ID d'un vol est unique à chaque compagnie<br>
-                self.compagnie.offre->forAll(v1, v2 | v1 <>v2  implies v1.id.substring(1, 2) <> v2.id.substring(1, 2))<br>
+                self ->forAll(c1, c2 | c1 <>c2  implies c1.vol.id.substring(1, 2) <> c2.vol.id.substring(1, 2))<br>
                 and<br><br>
                 #La partie numérique de l'ID d'un vol est unique à chaque vol au sein de la même compagnie<br>
-                self.compagnie.offre->forAll(v1, v2 | v1 <> v2 implies v1.id.substring(3, v1.id.size()) <> v2id.substring(3, v2.id.size()))<br><br>
+                self.vol ->forAll(v1, v2 | v1 <> v2 implies v1.id.substring(3, v1.id.size()) <> v2.id.substring(3, v2.id.size()))<br><br>
 
 
                 </li><br>
