@@ -91,6 +91,7 @@
             <li>Un client peut réserver un espace et décider de payer directement ou dans les 24 heures qui suivent sa réservation</li>
             <li>Un même client peut faire plusieurs réservations ou paiements mais une réservation/un paiement est fait par un seul client </li>
             <li>Pour chaque voyage on a une liste d'escales : infrastructures(aéroport, port, gare) visitées avant d'arriver à déstination </li>
+            <li>Une compagnie se concentre exclusivement sur un seul domaine d'activité</li>
           </ol>
     </p>
     <h2>
@@ -194,16 +195,16 @@
             Context Section inv: <br>
 		    self.cabine -> forAll(c1, c2 | c1.prix = c2.prix)  </li> <br>
             <li>Le client peut réserver un siège ou cabine disponible dans un vol (trajet) donné:<br> <br>
-                Context Reservation :: reserver()<br>
-                     Pre : self.espace.estDispo = true<br>
-                     Post : self.espace.estDispo = false</li><br>
+                Context Reservation :: reserver()<br>
+                    Pre : self.espace.estDispo = true<br>
+                    Post : self.espace.estDispo = false</li><br>
 
             <li>
                 Un siège réservé devient assigné à un passager une fois payé: le siège est donc confirmé: <br><br>
 
                 context reservation:: estPaye():Booelan<br>
-                     Pre: self.espace.estDiso = false and self.espace.estConfirme = false<br>
-		             Post : self.espace.estConfirme = true</li><br>
+                    Pre: self.espace.estDiso = false and self.espace.estConfirme = false<br>
+		            Post : self.espace.estConfirme = true</li><br>
             </li>
 
 
@@ -215,7 +216,23 @@
     <p>
         <h3>Justification </h3>
         <ul>
-            <li>la durée d'un itinéraire est convertie en heures</li>
+            <li>Un voyage(vol, trajet, itinéraire) contient différentes étapes dont les escales,
+                pour gérer cela nous avons décider <br> d'ajouter un attribut "escales" de type arrayList dans la classe “Voyage” 
+                qui va gérer les différents escales d'un <br> infrastructure(aéroport, gare et port) à un autre
+            </li><br>
+
+            <li>la durée d'un itinéraire est convertie en heure car notre variable duree est de type "Heure"</li><br>
+            
+            <li> Pour qu'une compagnie puisse offrir des voyages il faut que leur mode de transport(avion, train, paquebot) soit <br>
+                composé des sections, sans ceci nous n'aurons pas non plus les espaces(siege, cabine); un mode de transport <br>
+                qui ne contient pas de siège ne pourrait pas permettre aux clients de voyager.
+            </li><br>
+
+            <li>
+                
+            </li>
+
+            
         </ul>
     </p>
 
