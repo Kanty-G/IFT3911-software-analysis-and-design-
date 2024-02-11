@@ -206,10 +206,18 @@
                     Pre: self.espace.estDiso = false and self.espace.estConfirme = false<br>
 		            Post : self.espace.estConfirme = true</li><br>
             </li>
-
-
-        
         </ol>
+	<b> Autres contraintes:<br><br> </b>
+
+            <li> Un avion/un train comporte des sièges organisés en maximum 100 rangées et 10 colonnes: <br><br>
+                      Context Avion inv: <br>
+                          self.nombrerangees <= 10 <br>
+                           self.nombreColonnes <= 100 <br><br>
+
+                     Context Train inv: <br>
+                          self.nombrerangees <= 10 <br>
+                          self.nombreColonnes <= 100 <br>
+            </li>
     </p>
 
     <h2> Tâche 5</h2>
