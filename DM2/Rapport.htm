@@ -1,0 +1,248 @@
+<html>
+<head>
+    <title>IFT3911 DM1 Juliett</title>
+    <style type="text/css">
+        table
+        {
+            border: outset 2px black;
+            border-collapse: collapse;
+        }
+        th
+        {
+            border-bottom: double 2px black;
+        }
+        td
+        {
+            border-bottom: solid 1px black;
+        }
+        .first_col
+        {
+            border-right: double 2px black;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">
+        IFT 3911 - Devoir 1</h1>
+    <h2>
+        Information générale</h2>
+    <p>
+        <span style="font-weight: bold;">Nom: </span>Kanty-Louange Gakima
+        <br />
+        <span style="font-weight: bold;">Matricule: </span>20184109
+        <br />
+        <span style="font-weight: bold;">Courriel: </span>kanty.louange.gakima@umontreal.ca
+        <br />
+        <span style="font-weight: bold;">temps mis: </span>~ 20 heures
+    </p>
+    <p>
+        <span style="font-weight: bold;">Nom: </span>Marianne Schmit Pemmerl
+        <br />
+        <span style="font-weight: bold;">Matricule: </span>20192143
+        <br />
+        <span style="font-weight: bold;">Courriel: </span>marianne.schmit.pemmerl@umontreal.ca
+        <br />
+        <span style="font-weight: bold;">temps mis: </span>~ 20 heures
+    </p>
+    <h2>
+        Distribution des tâches</h2>
+    <p>
+        <span style="font-weight: bold;">Soumetteur:  </span>
+    </p>
+    <table cellpadding="7px">
+        <thead>
+            <tr>
+                <th class="first_col">
+                    Nom
+                </th>
+                <th>
+                  Tâches 
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="first_col">
+                    Kanty
+                </td>
+                <td>
+                    Statechart,
+                </td>
+            
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Marianne
+                </td>
+                <td>
+                    Réseau de pétri, 
+
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+    <h2>
+        Hypothèses
+    </h2>
+    <ul>
+        <li text-align="justify"> Nous avons supposé pour le réseau de pétri du tunnel que, chaque fois qu'une voiture 
+            entre dans le tunnel, une autre voiture se pointe à l'entrée pour être le prochain à 
+            entrer dans le tunnel pour respecter cette consigne : "Donc il doit y avoir une voiture à chaque entrée en tout temps"
+
+        </li>
+    </ul>
+
+    <h2>
+        Tâche 1: Réseau de pétri d'un tunnel
+    </h2>
+    <p><img width="1500" src="./réseau de pétri.png" ></p>
+
+    <h3>
+        <u>Graphe de couverture</u>
+    </h3>
+    <p><img src="" ></p>
+
+    <h4 text-align="justify">
+        M(tunnel est vide) = 1 <br>
+        le processeur (ressource) qui est le tunnel est soit vide ou non vide(1 voiture max) <br>
+        Nous pouvons remarquer que lorsqu'une voiture entre dans le tunnel et qu'aucun autre jeton 
+        ne peut entrer dans “tunnel est vide" tant que le tunnel n'est pas de nouveau vide, cela 
+        garantit que seule une voiture peut se trouver dans le tunnel à la fois.<br><br>
+
+        Le système est équitable car chaque côté du tunnel a la même opportunité de 
+        faire passer une voiture à travers le tunnel, c'est à dire que lorsque par exemple 
+        il y a une voiture qui entre du côté de Montréal et sort du tunnel, alors la prochaine voiture 
+        à entrer dans le tunnel sera celle du côté de la rive sud. Les tours sont alternés. <br><br>
+
+        Il n'y a pas de famine car sachant qu'il y a toujours une voiture de chaque côté, le système 
+        permet aux voitures d'entrer dans le tunnel de manière équitable, aucune voiture ne sera bloquée 
+        indéfiniment en attente.
+
+
+    </h4>
+
+
+    
+
+    <h2>
+        Tâche 2: Statechart du four à micro-onde
+    </h2>
+
+
+    <h2>
+        Tâche 3: Révision
+    </h2>
+   
+
+    <h3> Modèle du design </h3>
+    <p><img src="" ></p>
+    
+    <p>
+        <h3>Diagrammes de séquence</h3>
+        <ol>
+            <li> vérifier les vols/lignes/itinéraires </li>
+            <p><img src="./Vérifier voyage(vols_itinéraires_trajet).svg" ></p>
+            <li> Réserver un siège </li>
+            <p><img src="./Reservation Siege.svg" ></p>
+            <li>Payer un siège</li>
+            <p><img src="./Payer un siege.svg" ></p>
+        </ol>
+    </p>
+
+    <p>
+        <h3>Diagramme de paquets</h3>
+
+            <p><img src="" > </p>
+            
+    </p>
+    <p>
+        <h3>Contraintes OCL</h3>
+        <ol>
+            <li>Un aéroport/gare/port est identifié par trois lettres uniques à chaque aéroport:<br><br>
+                context Infrastructure inv: <br>
+                self.id.size() = 3 and  self -> forAll( i1, i2 | i1 <> i2 implies i1.id<> i2.id )</li><br>
+            
+            <li>La partie alphabétique de l'ID d'un vol est unique à chaque compagnie et la partie numérique est unique à
+                chaque vol au sein de la même compagnie: <br><br>
+                context Compagnie inv: <br><br>
+                #Les deux premiers caractères d'un ID de vol doivent être des lettres<br>
+                self.vol.id.substring(1,2).isAlpha()<br>
+                and <br><br>
+
+                #Le reste des caractères d'un ID de vol doivent être des chiffres<br>
+                self.vol.id.substring(3, self.vol.id.size()).isNumeric()<br>
+                and<br><br>
+                #Les deux premiers caractères de l'ID de vol doivent correspondre à l'ID de la compagnie <br>
+                self.vol.id.substring(1, 2) = self.id<br>
+                and<br><br>
+                #La partie alphabétique de l'ID d'un vol est unique à chaque compagnie<br>
+                self ->forAll(c1, c2 | c1 <>c2  implies c1.vol.id.substring(1, 2) <> c2.vol.id.substring(1, 2))<br>
+                and<br><br>
+                #La partie numérique de l'ID d'un vol est unique à chaque vol au sein de la même compagnie<br>
+                self.vol ->forAll(v1, v2 | v1 <> v2 implies v1.id.substring(3, v1.id.size()) <> v2.id.substring(3, v2.id.size()))<br><br>
+
+
+                </li><br>
+            <li>L'aéroport de départ et d'arrivée d'un vol doit être différent: <br><br>
+
+                Context Vol inv :<br>
+	            self.pointdeDepart <>  self.pointtDarrivee </li><br>
+            <li> Tous les sièges/cabines d'une même section ont le même prix: <br><br>
+                Context Section inv: <br>
+	            self.espace-> forAll(e1, e2 | e1 <> e2  implies e1.prix = e2.prix)</li><br>
+            <li> Un itinéraire ne peut pas durer plus de 21 jours: <br><br>
+                 context Itineraire inv:<br>
+                 self.duree <= 504</li><br>
+
+            <li> Le port de départ et d'arrivée doit être le même: <br><br>
+            context Itineraire inv : <br>
+	        self.pointDepart = pointDarrivee </li><br>
+            
+            <li> Un paquebot peut être assigné à plusieurs itinéraires tant qu'ils ne se chevauchent pas : <br><br>
+            Context Paquebot inv:<br>
+	        self.itineraire ->forAll(i1, i2 | i1 <> i2 implies ( i1.heureDarrivee <= i2.heureDepart ) </li><br>
+
+            <li> Toutes les cabines d'une même section ont le prix: <br><br>
+            Context Section inv: <br>
+		    self.cabine -> forAll(c1, c2 | c1.prix = c2.prix)  </li> <br>
+            <li>Le client peut réserver un siège ou cabine disponible dans un vol (trajet) donné:<br> <br>
+                Context Reservation :: reserver()<br>
+                    Pre : self.espace.estDispo = true<br>
+                    Post : self.espace.estDispo = false</li><br>
+
+            <li>
+                Un siège réservé devient assigné à un passager une fois payé: le siège est donc confirmé: <br><br>
+
+                context reservation:: estPaye():Booelan<br>
+                    Pre: self.espace.estDiso = false and self.espace.estConfirme = false<br>
+		            Post : self.espace.estConfirme = true</li><br>
+            </li>
+        </ol>
+	<b> Autres contraintes:<br><br> </b>
+
+            <li> Un avion/un train comporte des sièges organisés en maximum 100 rangées et 10 colonnes: <br><br>
+                    Context Avion inv: <br>
+                        self.nombrerangees <= 10 <br>
+                        self.nombreColonnes <= 100 <br><br>
+
+                    Context Train inv: <br>
+                        self.nombrerangees <= 10 <br>
+                        self.nombreColonnes <= 100 <br>
+            </li>
+    </p>
+
+    <h2> Tâche 4</h2>
+    <p>
+        <h3>Justification </h3>
+        <ul>
+            <li>
+            </li>
+
+            
+        </ul>
+    </p>
+
+</body>
+</html>
