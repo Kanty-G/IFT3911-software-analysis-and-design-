@@ -137,7 +137,7 @@
    
 
     <h3> Modèle du design </h3>
-    <p><img  width="1600" src="./modele du design.svg" ></p>
+    <p><img src="./modele du design.svg" ></p>
     
     <p>
         <h3>Diagrammes de séquence</h3>
@@ -236,24 +236,17 @@
     <h3>
         Modules réutilisables
     </h3>
-				
     <p>
+        
         Les modules les plus réutilisables sont: 
-        <ul>
-            <li> <b>Mode de transport</b> est une classe abstraite qui pourrait être utilisée dans les systèmes qui gèrent différents moyens de transport qui existent tels que l'avion, le train, le paquebot etc. </li>
-            <br>
-            <li><b>Voyage </b> est une classe abstraite qui pourrait être utilisée dans les systèmes qui gèrent différents type de déplacements utilisant des moyens de transport, comme que les vols aériens, les trajet férroviaires, les itinéraires navaux etc.  </li>
-            <br>
-            <li> <b>Infrastructure </b> est un module réutilisable car il encapsule les détails liés aux informations générales sur les infrastructures comme aéroports, gares et port. Celle ci pourrait être réutilisée dans les systèmes où il sera nécessaire d'utiliser une infrastructure </li>
-            <br>
-            <li><b>Espace </b>  est un module réutilisable car il encapsule les détails liés aux espaces physique tels que les sièges dans les moyens de transport, les salles de concert ou les chambres dans un hôtel etc.  </li>
-            <br>
-            <li><b>Compagnie </b> est un module réutilisable car il encapsule les détails liés aux  entreprises.  </li>
-            <br>
-            <li><b>Client </b> est un module réutilisable car il encapsule les détails liés aux  informations personnelles des utilisateurs. </li>
-            <br>
-            <li><b>Paiement</b> et <b>Carte </b> sont des modules réutilisable car ils encapsulent les détails liés aux transactions financières. </li>
-        </ul>
+        <ol>
+            <li> <b>Mode de transport</b> est une classe abstraite qui pourrait être utilisé dans les systèmes qui gèrent différents moyens de transport qui existent tels que l'avion, le train, le paquebot etc. </li>
+            <li><b>Voyage </b>  </li>
+            <li> <b>Infrastructure </b> car elle encapsule les informations générales sur les infrastructures comme aéroports, gares et port. Celle ci pourrait être réutilisée dans les système où il sera nécessaire d'utiliser un infrastructure </li>
+            <li><b>Compagnie </b> </li>
+            <li><b>Client </b> </li>
+            <li><b>Paiement</b> et <b>Carte </b> </li>
+        </ol>
     </p>
 
     <h2> Tâche 4 : Qualité du design</h2>
@@ -264,6 +257,7 @@
                 <b>
                     Discussion du couplage et de la cohesion des modules
                 </b>
+
             </li>
 
             <p>
@@ -308,14 +302,33 @@
 
             <li>
                 <b>
-                    Justification de l'application des principes de conception
+                    Justification de l'application des principes de conception<br>
                 </b>
+                <ul>
+                    <li> <b>SRP: Single Responsability Principle :</b> bien utilisé<br>
+                        Les classes ont une seule responsabilité, par exemple voyage contient les informations sur le voyage, et on a 
+                        controleur voyage qui contient les opérations sur le voyage, même chose pour infrastructure, Reservation, etc. <br>
+                        En résumé la conception est faite en respectant ce principe de conception.
+                    </li>
+                   <li> <b> OCP(Open/Closed Principle): </b>  bien utilisé <br> La présence de classes abstraites comme Mode_transport, voyage,etc
+                         suggère que le système est conçu pour être étendu (nouveaux modes de transport peuvent être ajoutés) sans modifier les classes existantes.
+                   </li> 
+                    <li> <b>ISP: Interface Segregation Principle :</b>pas bien utilisé<br>
+                            Apliquer ce principe de conception, implique d'utiliser plusieurs interfaces pour différents opérations
+                            que l'utilisateur peut faire, mais on a utilisé des contrôleurs pour l'interface du  client et l'administrateur <br>
+                        
+                    </li>
+                    <li>
+                        <b>ADP: Acyclic Dependency Principle </b> Bien utilisé<br>
+                        En analysant le duagramme de paquets on remarque le les dépendances sont acycliques, ce qui est un bon point pour la conception.
+                    </li>
+                </ul>
             </li>
             <p>
 
             </p>
 
-      
+     
         </ol>
     </p>
 
