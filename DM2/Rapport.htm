@@ -6,7 +6,9 @@
         {
             border: outset 2px black;
             border-collapse: collapse;
+            width: 90%;
         }
+        
         th
         {
             border-bottom: double 2px black;
@@ -47,7 +49,7 @@
     <h2>
         Distribution des tâches</h2>
     <p>
-        <span style="font-weight: bold;">Soumetteur:  </span>
+        <span style="font-weight: bold;">Soumetteur: Marianne Schmit Pemmerl </span>
     </p>
     <table cellpadding="7px">
         <thead>
@@ -67,7 +69,7 @@
                     Kanty
                 </td>
                 <td>
-                    Statechart,Modèle du design(50%), Diagramme de paquet(50%), Discussion du fardeau, Discussion du couplage, Identification des modules réutilisables
+                    Statechart,Modèle du design(50%), Diagramme de paquet(50%), Discussion du fardeau, graphe IA et Justification, Discussion du couplage et de la cohesion des modules, Identification des modules réutilisables, Justification de l'application des principes de conception
                 </td>
             
             </tr>
@@ -76,7 +78,7 @@
                     Marianne
                 </td>
                 <td>
-                    Réseau de pétri, Modèle du design(50%), Diagramme de paquet(50%), Discussion du fardeau, graphe IA et Justification, Discussion du couplage, Identification des modules réutilisables
+                    Réseau de pétri, Modèle du design(50%), Diagramme de paquet(50%), Discussion du fardeau, graphe IA et Justification, Discussion du couplage et de la cohesion des modules, Identification des modules réutilisables, Justification de l'application des principes de conception
 
                 </td>
        
@@ -267,26 +269,36 @@
                 </b>
             </li>
 
-            <p>
-                <b>La cohésion</b> fait référence à la mesure dans laquelle les éléments d'un module sont liés entre eux. <br><br>
+            <p style="text-align: justify;">
+                <b>La cohésion</b> fait référence au degré de relation entre les éléments d'un module. <br>
                 L'adoption de l'héritage pour structurer les concepts de Moyen de Transport, Voyage et Espace renforce
                 la cohésion en attribuant à chaque sous-classe des responsabilitées spécifiques et bien définies, 
                 évitant ainsi une surchage d'une classe unique avec des informations diverses. Pour les autres classes
                 nous remarquons aussi que toutes les méthodes et attributs sont directement liés au concept que la classe est censée représenter.
-                Nous pouvons ainsi conclure d'une bonne cohésion de notre diagramme de classe.
+                Nous pouvons ainsi conclure d'une bonne cohésion de notre diagramme de classe. <br>
+                <br>
+                <b>Le couplage</b> fait référence au degré d'interdépendance entre les classes. <br>
+                Classes ayant un faible couplage: Compagnie, Client, Carte, Infrastructure, Vol, Trajet, Itinéraire, Avion, Train, Paquebot, Siege, Cabine, Section.
+                Les changements dans ces classes ne devraient pas affecter les autres.
+                <br>
+                Classes ayant un fort couplage: Les controlleurs, Paiement (accède directement à la classe "Carte"), Réservation.
+                Les changements dans ces classes peuvent très probablement en affecter d'autres.
+                Nous pouvons ainsi conclure d'un assez bon couplage de notre diagramme de classe en général.
+
 
 
             </p>
             <li>
                 <b>
-                    Discussion du fardeau des classes
+                    Discussion du fardeau des classesz
                 </b>
             </li>
             <p>
                 Les classes du domaine "bas" ont un fardeau faible, ce qui implique une bonne cohesion des classes. <br>
                 Voici les classes du domaine bas : Trajet, Vol, Itinéraire, Avion, Paquebot, Train, Cabine, Siege ...<br>
+                <br>
                 Les classes du domaine "élevé" ont un fardeau élevé, ce qui implique une bonne réutilisation des classes. <br>
-                Voici les classes du domaine élevé : Mode de transport, Voyage, Espace, Paiement, Compagnie ... <br>
+                Voici les classes du domaine élevé : Mode de transport, Voyage, Espace, Paiement, Carte, Compagnie, Client, Infrastructure ... <br>
 
             </p>
 
@@ -301,7 +313,7 @@
                 <br>
                 <p>
                     Le paquet "Transport Composition" est stable mais peu abstrait, le niveau d'abstraction pourrait être amélioré. 
-                    Ce dernier est un bon candidat pour la réutilisation. <br><br>
+                    Ce dernier est potentiellement un bon candidat pour la réutilisation. <br><br>
 
                     Les paquets "Voyage Composition" et "Utilisateurs" ont un niveau d'abstraction et d'instabilité qui pourrait être amélioré.<br><br>
 
@@ -319,32 +331,58 @@
                     Justification de l'application des principes de conception
                 </b>
             </li>
+            <br>
             <ul>
-                <li> <b>SRP: Single Responsability Principle :</b> bien utilisé<br>
-                    Les classes ont une seule responsabilité, par exemple voyage contient les informations sur le voyage, et on a 
-                    controleur voyage qui contient les opérations sur le voyage, même chose pour infrastructure, Reservation, etc. <br>
+                <li> <b>SRP: Single Responsability Principle :</b> Bien utilisé<br>
+                    Les classes ont une seule responsabilité, par exemple Voyage contient les informations sur le voyage, et on a 
+                    Controleur voyage qui contient les opérations sur le Voyage, même chose pour Infrastructure, Reservation, etc. <br>
                     En résumé la conception est faite en respectant ce principe de conception.
                 </li>
                 <br>
-               <li> <b> OCP(Open/Closed Principle): </b>  bien utilisé <br> La présence de classes abstraites comme Mode_transport, voyage,etc
+               <li> <b> OCP(Open/Closed Principle): </b>  Bien utilisé <br> La présence de classes abstraites comme Mode_transport, voyage,etc
                      suggère que le système est conçu pour être étendu (nouveaux modes de transport peuvent être ajoutés) sans modifier les classes existantes.
                </li> 
-                <li> <b>ISP: Interface Segregation Principle :</b>pas bien utilisé<br>
-                        Apliquer ce principe de conception, implique d'utiliser plusieurs interfaces pour différents opérations
+               <br>
+                <li> <b>ISP: Interface Segregation Principle :</b>Pas bien utilisé<br>
+                        Appliquer ce principe de conception, implique d'utiliser plusieurs interfaces pour différents opérations
                         que l'utilisateur peut faire, mais on a utilisé des contrôleurs pour l'interface du  client et l'administrateur <br>
                   
                 </li>
                 <br>
+
+                <li>
+                    <b>DIP: Dependency Inversion Principle </b> Bien utilisé<br>
+                    L'utilisation du DIP implique la dépendance des abstractions et non des implémentations, 
+                    ce qui a été appliqué pour les modules suivants: Voyage, Mode de transport et Espace
+                </li>
+
+            </ul>
+
+            <br>
+            <li>
+                <b>
+                    Justification de l'application des principes de couplage de paquets
+                </b>
+            </li>
+            <br>
+
+            <ul>
                 <li>
                     <b>ADP: Acyclic Dependency Principle </b> Bien utilisé<br>
-                    En analysant le duagramme de paquets on remarque le les dépendances sont acycliques, ce qui est un bon point pour la conception.
+                    En analysant le diagramme de paquets on remarque le les dépendances sont acycliques, ce qui est un bon point pour la conception.
                 </li>
                 <br>
                 <li>
-                   <b>SDP: Stable dependencies Principle ??..</b>
+                   <b>SDP: Stable dependencies Principle</b>  Bien utilisé<br>
+                   En analysant le diagramme de paquets nous pouvons remarquer que tous les paquets dépendent uniquement de paquets plus stables que 
+                   lui sauf pour les paquets "Voyage Composition" et "Utilisateurs" où le niveau de stabilité est le même.
+                </li>
+                <br>
+                <li>
+                   <b>SAP: Stable Abstraction Principle</b>  Pas bien utilisé<br>
+                   En analysant le diagramme de paquets nous pouvons remarquer que les paquets les plus stables ne sont pas forcément les plus abstraits.
                 </li>
             </ul>
-
       
         </ol>
     </p>
