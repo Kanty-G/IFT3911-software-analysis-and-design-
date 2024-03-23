@@ -67,7 +67,7 @@
                     Kanty
                 </td>
                 <td>
-                    Statechart, Modèle du design(50%)
+                    Statechart,Modèle du design(50%), Diagramme de paquet(50%), Discussion du fardeau, Discussion du couplage, Identification des modules réutilisables
                 </td>
             
             </tr>
@@ -76,7 +76,7 @@
                     Marianne
                 </td>
                 <td>
-                    Réseau de pétri, 
+                    Réseau de pétri, Modèle du design(50%), Diagramme de paquet(50%), Discussion du fardeau, graphe IA et Justification, Discussion du couplage, Identification des modules réutilisables
 
                 </td>
        
@@ -87,9 +87,7 @@
         Hypothèses
     </h2>
     <ul>
-        <li text-align="justify"> Nous avons supposé pour le réseau de pétri du tunnel que, chaque fois qu'une voiture 
-            entre dans le tunnel, une autre voiture se pointe à l'entrée pour être le prochain à 
-            entrer dans le tunnel pour respecter cette consigne : "Donc il doit y avoir une voiture à chaque entrée en tout temps"
+        <li text-align="justify"> Nous avons supposé pour le réseau de pétri du tunnel qu'il ya toujours une voiture à l'entrée de chaque tunnel en tout temps
 
         </li>
     </ul>
@@ -103,6 +101,8 @@
         <u>Graphe de couverture</u>
     </h3>
     <p><img width="1000" src="./graphe de couverture.png" ></p>
+
+    <p><img width="1000" src="./GSPN analysis.png" ></p>
 
     <h4 text-align="justify">
         M(tunnel est vide) = 1 <br>
@@ -134,7 +134,7 @@
     <h2>
         Tâche 3: Révision
     </h2>
-
+   
 
     <h3> Modèle du design </h3>
     <p><img src="./modele du design.svg" ></p>
@@ -154,7 +154,7 @@
     <p>
         <h3>Diagramme de paquets</h3>
 
-            <p><img src="" > </p>
+            <p><img width="1000" src="./systeme_reservation_voyage.svg" > </p>
             
     </p>
     <p>
@@ -233,16 +233,83 @@
             </li>
     </p>
 
-    <h2> Tâche 4</h2>
+    <h3>
+        Modules réutilisables
+    </h3>
     <p>
-        <h3>Identification des à usage générale et réutilisables: </h3>
-        <p></p>
-        <ul>
+        
+        Les modules les plus réutilisables sont: 
+        <ol>
+            <li> <b>Mode de transport</b> est une classe abstraite qui pourrait être utilisé dans les systèmes qui gèrent différents moyens de transport qui existent tels que l'avion, le train, le paquebot etc. </li>
+            <li><b>Voyage </b> </li>
+            <li> <b>Infrastructure </b> car elle encapsule les informations générales sur les infrastructures comme aéroports, gares et port. Celle ci pourrait être réutilisée dans les système où il sera nécessaire d'utiliser un infrastructure </li>
+            <li><b>Compagnie </b> </li>
+            <li><b>Client </b> </li>
+            <li><b>Paiement</b> et <b>Carte </b> </li>
+        </ol>
+    </p>
+
+    <h2> Tâche 4 : Qualité du design</h2>
+    <p>
+
+        <ol>
             <li>
+                <b>
+                    Discussion du couplage et de la cohesion des modules
+                </b>
             </li>
 
-            
-        </ul>
+            <p>
+
+            </p>
+            <li>
+                <b>
+                    Discussion du fardeau des classes
+                </b>
+            </li>
+            <p>
+                Les classes du domaine "bas" ont un fardeau faible, ce qui implique une bonne cohesion des classes. <br>
+                Voici les classes du domaine bas : Trajet, Vol, Itinéraire, Avion, Paquebot, Train, Cabine, Siege ...<br>
+                Les classes du domaine "élevé" ont un fardeau élevé, ce qui implique une bonne réutilisation des classes. <br>
+                Voici les classes du domaine élevé : Mode de transport, Voyage, Espace, Paiement, Compagnie ... <br>
+
+            </p>
+
+            <li>
+                <b>
+                   Graphe IA et Justification
+                </b>
+            </li>
+            <p>
+                <img width="800" src="./graphe AI.png" > <br>
+                <br>
+                <br>
+                <p>
+                    Le paquet "Transport Composition" est stable mais peu abstrait, le niveau d'abstraction pourrait être amélioré. 
+                    Ce dernier est un bon candidat pour la réutilisation. <br><br>
+
+                    Les paquets "Voyage Composition" et "Utilisateurs" ont un niveau d'abstraction et d'instabilité qui pourrait être amélioré.<br><br>
+
+                    Le paquet "Operations Client" est le plus à risque en terme de maintenance et de réutilisation car il a une instabilité élevée et pas d'abstraction.
+                    Le niveau d'abstraction pourrait être amélioré en ajoutant des abstractions ou interfaces.
+
+                    <br><br>
+
+                </p>
+
+            </p>
+
+            <li>
+                <b>
+                    Justification de l'application des principes de conception
+                </b>
+            </li>
+            <p>
+
+            </p>
+
+      
+        </ol>
     </p>
 
 </body>
