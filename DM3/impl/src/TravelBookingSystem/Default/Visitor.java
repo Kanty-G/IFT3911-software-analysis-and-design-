@@ -1,5 +1,9 @@
 package TravelBookingSystem.Default;
 
+import TravelBookingSystem.Travel.CruiseItinerary;
+import TravelBookingSystem.Travel.Flight;
+import TravelBookingSystem.Travel.TrainRoute;
+
 public abstract class Visitor
 {
 

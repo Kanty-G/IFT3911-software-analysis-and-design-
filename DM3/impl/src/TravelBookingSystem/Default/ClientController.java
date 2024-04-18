@@ -1,5 +1,9 @@
 package TravelBookingSystem.Default;
 
+import TravelBookingSystem.Reservation.Reservation;
+import TravelBookingSystem.Reservation.SeatingPreference;
+import TravelBookingSystem.Vehicle.TravelSpace;
+
 public class ClientController
 {
 

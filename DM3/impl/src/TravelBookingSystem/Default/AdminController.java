@@ -1,11 +1,13 @@
 package TravelBookingSystem.Default;
 
+import TravelBookingSystem.User.Admin;
+
 import java.util.Stack;
 
 public class AdminController
 {
 
-    private User loggedUser;
+    private Admin loggedUser;
     private final Stack<Command> commandHistory = new Stack<>();
 
     public void ajouterVoyage()

@@ -1,29 +1,32 @@
 package TravelBookingSystem.Database;
 
-import TravelBookingSystem.Default.*;
+import TravelBookingSystem.Company.*;
+import TravelBookingSystem.Infrastructure.*;
+import TravelBookingSystem.Travel.*;
+import TravelBookingSystem.Vehicle.*;
 
 import java.io.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class TravelBookingDatabase implements Serializable,
-        AirportDatabase, HarborDatabase, TrainStationDatabase,
         AirportCompanyDatabase, CruiseCompanyDatabase, TrainCompanyDatabase,
+        AirportDatabase, HarborDatabase, TrainStationDatabase,
         AirplaneDatabase, CruiseShipDatabase, TrainDatabase,
         FlightDatabase, CruiseItineraryDatabase, TrainRouteDatabase
 {
     private static final String databaseFilePath = "./database.data";
     private static final long serialVersionUID = 1L;
 
-    // Infrastructure
-    private Hashtable<String, Airport> airportTable = new Hashtable<>();
-    private Hashtable<String, Harbor> harborTable = new Hashtable<>();
-    private Hashtable<String, TrainStation> trainStationTable = new Hashtable<>();
-
     // Companies
     private Hashtable<String, AirportCompany> airportCompanyTable = new Hashtable<>();
     private Hashtable<String, CruiseCompany> cruiseCompanyTable = new Hashtable<>();
     private Hashtable<String, TrainCompany> trainCompanyTable = new Hashtable<>();
+
+    // Infrastructure
+    private Hashtable<String, Airport> airportTable = new Hashtable<>();
+    private Hashtable<String, Harbor> harborTable = new Hashtable<>();
+    private Hashtable<String, TrainStation> trainStationTable = new Hashtable<>();
 
     // TransportVehicles
     private Hashtable<String, Airplane> airplaneTable = new Hashtable<>();

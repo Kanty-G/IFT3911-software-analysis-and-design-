@@ -1,7 +1,6 @@
 package TravelBookingSystem.Default;
 
-public class Passenger extends User
-{
+public class Passenger {
 
     protected String firstName;
     protected String lastName;
