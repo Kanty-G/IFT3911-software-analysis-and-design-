@@ -35,7 +35,7 @@ public class AdminView implements View
         adminMenu.addMenuComponent(makeManageInfrastructuresMenu());
         adminMenu.addMenuComponent(makeManageTravelsMenu());
         adminMenu.addMenuComponent(makeManageTransportVehiclesMenu());
-        adminMenu.addMenuComponent(makeCheckDatabaseMenu());
+        adminMenu.addMenuComponent(makeDatabaseMenu());
         adminMenu.addMenuComponent(new MenuActionItem("Undo Last Operation", this::undo));
         adminMenu.addMenuComponent(new MenuActionItem("Exit", this::exit));
     }
@@ -181,8 +181,17 @@ public class AdminView implements View
         return manageTrainRoutesMenu;
     }
 
-    private Menu makeCheckDatabaseMenu() {
-        Menu checkDatabaseMenu = new Menu("Check Database", adminMenu);
+    private Menu makeDatabaseMenu()
+    {
+        Menu databaseMenu = new Menu("Manage Database", adminMenu);
+        databaseMenu.addMenuComponent(makeCheckDatabaseMenu(databaseMenu));
+        databaseMenu.addMenuComponent(new MenuActionItem("Clear Database", travelBookingDatabase::clearDatabase));
+        return databaseMenu;
+    }
+
+    private Menu makeCheckDatabaseMenu(Menu databaseMenu)
+    {
+        Menu checkDatabaseMenu = new Menu("Explore Data", databaseMenu);
         checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airport Companies", this::printAllAirportCompanies));
         checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Companies", this::printAllCruiseCompanies));
         checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Companies", this::printAllTrainCompanies));
