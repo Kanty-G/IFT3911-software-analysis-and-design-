@@ -107,16 +107,16 @@ public class TravelBookingDatabase implements Serializable,
         airplaneTable.put(airplaneId, airplane);
     }
 
-    public void setAirplane(Airplane airplane)
+    public Airplane replaceAirplane(Airplane airplane)
     {
         String airplaneId = airplane.getId();
         if (!airplaneTable.containsKey(airplaneId))
         {
             System.out.println("No airplane with id " + airplaneId + " exists in the database.");
-            return;
+            return null;
         }
 
-        airplaneTable.replace(airplaneId, airplane);
+        return airplaneTable.replace(airplaneId, airplane);
     }
 
     public Airplane removeAirplane(String id)
@@ -146,16 +146,16 @@ public class TravelBookingDatabase implements Serializable,
         airportCompanyTable.put(airportCompanyId, airportCompany);
     }
 
-    public void setAirportCompany(AirportCompany airportCompany)
+    public AirportCompany replaceAirportCompany(AirportCompany airportCompany)
     {
         String airportCompanyId = airportCompany.getId();
         if (!airportCompanyTable.containsKey(airportCompanyId))
         {
             System.out.println("No airportCompany with id " + airportCompanyId + " exists in the database.");
-            return;
+            return null;
         }
 
-        airportCompanyTable.replace(airportCompanyId, airportCompany);
+        return airportCompanyTable.replace(airportCompanyId, airportCompany);
     }
 
     public AirportCompany removeAirportCompany(String id)
@@ -185,16 +185,16 @@ public class TravelBookingDatabase implements Serializable,
         airportTable.put(airportId, airport);
     }
 
-    public void setAirport(Airport airport)
+    public Airport replaceAirport(Airport airport)
     {
         String airportId = airport.getId();
         if (!airportTable.containsKey(airportId))
         {
             System.out.println("No airport with id " + airportId + " exists in the database.");
-            return;
+            return null;
         }
 
-        airportTable.replace(airportId, airport);
+        return airportTable.replace(airportId, airport);
     }
 
     public Airport removeAirport(String id)
@@ -224,16 +224,16 @@ public class TravelBookingDatabase implements Serializable,
         cruiseCompanyTable.put(cruiseCompanyId, cruiseCompany);
     }
 
-    public void setCruiseCompany(CruiseCompany cruiseCompany)
+    public CruiseCompany replaceCruiseCompany(CruiseCompany cruiseCompany)
     {
         String cruiseCompanyId = cruiseCompany.getId();
         if (!cruiseCompanyTable.containsKey(cruiseCompanyId))
         {
             System.out.println("No cruiseCompany with id " + cruiseCompanyId + " exists in the database.");
-            return;
+            return null;
         }
 
-        cruiseCompanyTable.replace(cruiseCompanyId, cruiseCompany);
+        return cruiseCompanyTable.replace(cruiseCompanyId, cruiseCompany);
     }
 
     public CruiseCompany removeCruiseCompany(String id)
@@ -263,16 +263,16 @@ public class TravelBookingDatabase implements Serializable,
         itineraryTable.put(cruiseItineraryId, itinerary);
     }
 
-    public void setCruiseItinerary(CruiseItinerary itinerary)
+    public CruiseItinerary replaceCruiseItinerary(CruiseItinerary itinerary)
     {
         String itineraryId = itinerary.getId();
         if (!itineraryTable.containsKey(itineraryId))
         {
             System.out.println("No itinerary with id " + itineraryId + " exists in the database.");
-            return;
+            return null;
         }
 
-        itineraryTable.replace(itineraryId, itinerary);
+        return itineraryTable.replace(itineraryId, itinerary);
     }
 
     public CruiseItinerary removeCruiseItinerary(String id)
@@ -302,16 +302,16 @@ public class TravelBookingDatabase implements Serializable,
         cruiseShipTable.put(cruiseShipId, cruiseShip);
     }
 
-    public void setCruiseShip(CruiseShip cruiseShip)
+    public CruiseShip replaceCruiseShip(CruiseShip cruiseShip)
     {
         String cruiseShipId = cruiseShip.getId();
         if (!cruiseShipTable.containsKey(cruiseShipId))
         {
             System.out.println("No cruiseShip with id " + cruiseShipId + " exists in the database.");
-            return;
+            return null;
         }
 
-        cruiseShipTable.replace(cruiseShipId, cruiseShip);
+        return cruiseShipTable.replace(cruiseShipId, cruiseShip);
     }
 
     public CruiseShip removeCruiseShip(String id)
@@ -341,16 +341,16 @@ public class TravelBookingDatabase implements Serializable,
         flightTable.put(flightId, flight);
     }
 
-    public void setFlight(Flight flight)
+    public Flight replaceFlight(Flight flight)
     {
         String flightId = flight.getId();
         if (!flightTable.containsKey(flightId))
         {
             System.out.println("No flight with id " + flightId + " exists in the database.");
-            return;
+            return null;
         }
 
-        flightTable.replace(flightId, flight);
+        return flightTable.replace(flightId, flight);
     }
 
     public Flight removeFlight(String id)
@@ -380,16 +380,16 @@ public class TravelBookingDatabase implements Serializable,
         harborTable.put(harborId, harbor);
     }
 
-    public void setHarbor(Harbor harbor)
+    public Harbor replaceHarbor(Harbor harbor)
     {
         String harborId = harbor.getId();
         if (!harborTable.containsKey(harborId))
         {
             System.out.println("No harbor with id " + harborId + " exists in the database.");
-            return;
+            return null;
         }
 
-        harborTable.replace(harborId, harbor);
+        return harborTable.replace(harborId, harbor);
     }
 
     public Harbor removeHarbor(String id)
@@ -419,16 +419,16 @@ public class TravelBookingDatabase implements Serializable,
         trainCompanyTable.put(trainCompanyId, trainCompany);
     }
 
-    public void setTrainCompany(TrainCompany trainCompany)
+    public TrainCompany replaceTrainCompany(TrainCompany trainCompany)
     {
         String trainCompanyId = trainCompany.getId();
         if (!trainCompanyTable.containsKey(trainCompanyId))
         {
             System.out.println("No trainCompany with id " + trainCompanyId + " exists in the database.");
-            return;
+            return null;
         }
 
-        trainCompanyTable.replace(trainCompanyId, trainCompany);
+        return trainCompanyTable.replace(trainCompanyId, trainCompany);
     }
 
     public TrainCompany removeTrainCompany(String id)
@@ -458,16 +458,16 @@ public class TravelBookingDatabase implements Serializable,
         trainTable.put(trainId, train);
     }
 
-    public void setTrain(Train train)
+    public Train replaceTrain(Train train)
     {
         String trainId = train.getId();
         if (!trainTable.containsKey(trainId))
         {
             System.out.println("No train with id " + trainId + " exists in the database.");
-            return;
+            return null;
         }
 
-        trainTable.replace(trainId, train);
+        return trainTable.replace(trainId, train);
     }
 
     public Train removeTrain(String id)
@@ -497,16 +497,16 @@ public class TravelBookingDatabase implements Serializable,
         routeTable.put(trainRouteId, trainRoute);
     }
 
-    public void setTrainRoute(TrainRoute trainRoute)
+    public TrainRoute replaceTrainRoute(TrainRoute trainRoute)
     {
         String routeId = trainRoute.getId();
         if (!routeTable.containsKey(routeId))
         {
             System.out.println("No route with id " + routeId + " exists in the database.");
-            return;
+            return null;
         }
 
-        routeTable.replace(routeId, trainRoute);
+        return routeTable.replace(routeId, trainRoute);
     }
 
     public TrainRoute removeTrainRoute(String id)
@@ -536,16 +536,16 @@ public class TravelBookingDatabase implements Serializable,
         trainStationTable.put(trainStationId, trainStation);
     }
 
-    public void setTrainStation(TrainStation trainStation)
+    public TrainStation replaceTrainStation(TrainStation trainStation)
     {
         String trainStationId = trainStation.getId();
         if (!trainStationTable.containsKey(trainStationId))
         {
             System.out.println("No trainStation with id " + trainStationId + " exists in the database.");
-            return;
+            return null;
         }
 
-        trainStationTable.replace(trainStationId, trainStation);
+        return trainStationTable.replace(trainStationId, trainStation);
     }
 
     public TrainStation removeTrainStation(String id)
@@ -575,16 +575,16 @@ public class TravelBookingDatabase implements Serializable,
         paymentTable.put(paymentId, payment);
     }
 
-    public void setPayment(Payment payment)
+    public Payment replacePayment(Payment payment)
     {
         String paymentId = payment.getId();
         if (!paymentTable.containsKey(paymentId))
         {
             System.out.println("No payment with id " + paymentId + " exists in the database.");
-            return;
+            return null;
         }
 
-        paymentTable.replace(paymentId, payment);
+        return paymentTable.replace(paymentId, payment);
     }
 
     public Payment removePayment(String id)
@@ -614,16 +614,16 @@ public class TravelBookingDatabase implements Serializable,
         reservationTable.put(reservationNumber, reservation);
     }
 
-    public void setReservation(Reservation reservation)
+    public Reservation replaceReservation(Reservation reservation)
     {
         String reservationNumber = reservation.getReservationNumber();
         if (!reservationTable.containsKey(reservationNumber))
         {
             System.out.println("No reservation with number " + reservationNumber + " exists in the database.");
-            return;
+            return null;
         }
 
-        reservationTable.replace(reservationNumber, reservation);
+        return reservationTable.replace(reservationNumber, reservation);
     }
 
     public Reservation removeReservation(String reservationNumber)
