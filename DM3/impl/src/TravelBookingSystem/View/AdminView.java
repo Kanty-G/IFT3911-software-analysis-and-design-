@@ -1,18 +1,26 @@
 package TravelBookingSystem.View;
 
 import TravelBookingSystem.Controller.AdminController;
+import TravelBookingSystem.Database.TravelBookingDatabase;
 import TravelBookingSystem.Default.Observer;
 import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
 
+import java.io.IOException;
+import java.util.Enumeration;
+
 public class AdminView extends Observer implements View
 {
+    // TODO: Remove and replace with a DataExplorer using a visitor
+    private final TravelBookingDatabase travelBookingDatabase;
+
     private final AdminController adminController;
     private final Menu adminMenu = new Menu("Main Menu");
 
-    public AdminView(AdminController adminController)
+    public AdminView(AdminController adminController, TravelBookingDatabase travelBookingDatabase)
     {
+        this.travelBookingDatabase = travelBookingDatabase;
         this.adminController = adminController;
         initializeAdminMenu();
     }
@@ -28,6 +36,7 @@ public class AdminView extends Observer implements View
         adminMenu.addMenuComponent(makeManageInfrastructuresMenu());
         adminMenu.addMenuComponent(makeManageTravelsMenu());
         adminMenu.addMenuComponent(makeManageTransportVehiclesMenu());
+        adminMenu.addMenuComponent(makeCheckDatabaseMenu());
         adminMenu.addMenuComponent(new MenuActionItem("Undo Last Operation", this::undo));
         adminMenu.addMenuComponent(new MenuActionItem("Exit", this::exit));
     }
@@ -171,6 +180,23 @@ public class AdminView extends Observer implements View
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrainRoute));
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrainRoute));
         return manageTrainRoutesMenu;
+    }
+
+    private Menu makeCheckDatabaseMenu() {
+        Menu checkDatabaseMenu = new Menu("Check Database", adminMenu);
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airport Companies", this::printAllAirportCompanies));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Companies", this::printAllCruiseCompanies));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Companies", this::printAllTrainCompanies));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airports", this::printAllAirports));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Harbors", this::printAllHarbors));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Stations", this::printAllTrainStations));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Flights", this::printAllFlights));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Itineraries", this::printAllCruiseItineraries));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Routes", this::printAllTrainRoutes));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airplanes", this::printAllAirplanes));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Ships", this::printAllCruiseShips));
+        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Trains", this::printAllTrains));
+        return checkDatabaseMenu;
     }
 
     private void exit()
@@ -318,48 +344,131 @@ public class AdminView extends Observer implements View
         adminController.deleteTrainRoute();
     }
 
-    public void addAirplane()
+    private void addAirplane()
     {
         adminController.addAirplane();
     }
 
-    public void modifyAirplane()
+    private void modifyAirplane()
     {
         adminController.modifyAirplane();
     }
 
-    public void deleteAirplane()
+    private void deleteAirplane()
     {
         adminController.deleteAirplane();
     }
 
-    public void addCruiseShip()
+    private void addCruiseShip()
     {
         adminController.addCruiseShip();
     }
 
-    public void modifyCruiseShip()
+    private void modifyCruiseShip()
     {
         adminController.modifyCruiseShip();
     }
 
-    public void deleteCruiseShip()
+    private void deleteCruiseShip()
     {
         adminController.deleteCruiseShip();
     }
 
-    public void addTrain()
+    private void addTrain()
     {
         adminController.addTrain();
     }
 
-    public void modifyTrain()
+    private void modifyTrain()
     {
         adminController.modifyTrain();
     }
 
-    public void deleteTrain()
+    private void deleteTrain()
     {
         adminController.deleteTrain();
+    }
+
+    private void printAllAirportCompanies()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllAirportCompanies());
+    }
+
+    private void printAllCruiseCompanies()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllCruiseCompanies());
+    }
+
+    private void printAllTrainCompanies()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrainCompanies());
+    }
+
+    private void printAllAirports()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllAirports());
+    }
+
+    private void printAllHarbors()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllHarbors());
+    }
+
+    private void printAllTrainStations()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrainStations());
+    }
+
+    private void printAllFlights()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllFlights());
+    }
+
+    private void printAllCruiseItineraries()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllCruiseItineraries());
+    }
+
+    private void printAllTrainRoutes()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrainRoutes());
+    }
+
+    private void printAllAirplanes()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllAirplanes());
+    }
+
+    private void printAllCruiseShips()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllCruiseShips());
+    }
+
+    private void printAllTrains()
+    {
+        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrains());
+    }
+
+    // TODO : Move to a generic util
+    private static void printAllElementsAndWaitForInput(Enumeration<?> elements)
+    {
+        System.out.println("---------------");
+
+        while(elements.hasMoreElements())
+        {
+            System.out.println(" -  " + elements.nextElement());
+        }
+
+        System.out.println("---------------");
+        System.out.println("Press Enter to continue...");
+
+        try
+        {
+            System.in.read(); // Wait for any input
+        }
+        catch (IOException ioException)
+        {
+            ioException.printStackTrace();
+        }
     }
 }

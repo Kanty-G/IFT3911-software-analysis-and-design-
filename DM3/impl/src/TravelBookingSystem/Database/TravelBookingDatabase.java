@@ -89,7 +89,7 @@ public class TravelBookingDatabase implements Serializable,
         }
     }
 
-    public void ClearDatabase()
+    public void clearDatabase()
     {
         clearTables();
         saveDatabase();

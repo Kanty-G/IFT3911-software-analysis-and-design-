@@ -110,7 +110,7 @@ public class TravelBookingSystem
     {
         loginView = new LoginView(loginController);
         clientView = new ClientView(clientController);
-        adminView = new AdminView(adminController);
+        adminView = new AdminView(adminController, database);
         focusedView = loginView;
         focusedView.display();
     }
