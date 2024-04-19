@@ -2,6 +2,10 @@ package TravelBookingSystem.Database;
 
 import TravelBookingSystem.Company.*;
 import TravelBookingSystem.Infrastructure.*;
+import TravelBookingSystem.Payment.Payment;
+import TravelBookingSystem.Payment.PaymentDatabase;
+import TravelBookingSystem.Reservation.Reservation;
+import TravelBookingSystem.Reservation.ReservationDatabase;
 import TravelBookingSystem.Travel.*;
 import TravelBookingSystem.Vehicle.*;
 
@@ -9,7 +13,10 @@ import java.io.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class TravelBookingDatabase implements Serializable, CompanyDatabase, InfrastructureDatabase, TransportVehicleDatabase, TravelDatabase
+public class TravelBookingDatabase implements Serializable,
+        CompanyDatabase, InfrastructureDatabase,
+        TransportVehicleDatabase, TravelDatabase,
+        ReservationDatabase, PaymentDatabase
 {
     private static final String databaseFilePath = "./database.data";
     private static final long serialVersionUID = 1L;
@@ -33,6 +40,10 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
     private Hashtable<String, Flight> flightTable = new Hashtable<>();
     private Hashtable<String, CruiseItinerary> itineraryTable = new Hashtable<>();
     private Hashtable<String, TrainRoute> routeTable = new Hashtable<>();
+
+    //Client
+    private Hashtable<String, Reservation> reservationTable = new Hashtable<>();
+    private Hashtable<String, Payment> paymentTable = new Hashtable<>();
 
     public void loadDatabase()
     {
@@ -100,7 +111,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String airplaneId = airplane.getId();
         if (!airplaneTable.containsKey(airplaneId))
         {
-            System.out.println("No airplane with id" + airplaneId + "exists in the database.");
+            System.out.println("No airplane with id " + airplaneId + " exists in the database.");
             return;
         }
 
@@ -138,7 +149,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String airportCompanyId = airportCompany.getId();
         if (!airportCompanyTable.containsKey(airportCompanyId))
         {
-            System.out.println("No airportCompany with id" + airportCompanyId + "exists in the database.");
+            System.out.println("No airportCompany with id " + airportCompanyId + " exists in the database.");
             return;
         }
 
@@ -176,7 +187,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String airportId = airport.getId();
         if (!airportTable.containsKey(airportId))
         {
-            System.out.println("No airport with id" + airportId + "exists in the database.");
+            System.out.println("No airport with id " + airportId + " exists in the database.");
             return;
         }
 
@@ -214,7 +225,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String cruiseCompanyId = cruiseCompany.getId();
         if (!cruiseCompanyTable.containsKey(cruiseCompanyId))
         {
-            System.out.println("No cruiseCompany with id" + cruiseCompanyId + "exists in the database.");
+            System.out.println("No cruiseCompany with id " + cruiseCompanyId + " exists in the database.");
             return;
         }
 
@@ -252,7 +263,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String itineraryId = itinerary.getId();
         if (!itineraryTable.containsKey(itineraryId))
         {
-            System.out.println("No itinerary with id" + itineraryId + "exists in the database.");
+            System.out.println("No itinerary with id " + itineraryId + " exists in the database.");
             return;
         }
 
@@ -290,7 +301,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String cruiseShipId = cruiseShip.getId();
         if (!cruiseShipTable.containsKey(cruiseShipId))
         {
-            System.out.println("No cruiseShip with id" + cruiseShipId + "exists in the database.");
+            System.out.println("No cruiseShip with id " + cruiseShipId + " exists in the database.");
             return;
         }
 
@@ -328,7 +339,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String flightId = flight.getId();
         if (!flightTable.containsKey(flightId))
         {
-            System.out.println("No flight with id" + flightId + "exists in the database.");
+            System.out.println("No flight with id " + flightId + " exists in the database.");
             return;
         }
 
@@ -363,7 +374,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String harborId = harbor.getId();
         if (!harborTable.containsKey(harborId))
         {
-            System.out.println("No harbor with id" + harborId + "exists in the database.");
+            System.out.println("No harbor with id " + harborId + " exists in the database.");
             return;
         }
 
@@ -401,7 +412,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String trainCompanyId = trainCompany.getId();
         if (!trainCompanyTable.containsKey(trainCompanyId))
         {
-            System.out.println("No trainCompany with id" + trainCompanyId + "exists in the database.");
+            System.out.println("No trainCompany with id " + trainCompanyId + " exists in the database.");
             return;
         }
 
@@ -439,7 +450,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String trainId = train.getId();
         if (!trainTable.containsKey(trainId))
         {
-            System.out.println("No train with id" + trainId + "exists in the database.");
+            System.out.println("No train with id " + trainId + " exists in the database.");
             return;
         }
 
@@ -477,7 +488,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         String routeId = trainRoute.getId();
         if (!routeTable.containsKey(routeId))
         {
-            System.out.println("No route with id" + routeId + "exists in the database.");
+            System.out.println("No route with id " + routeId + " exists in the database.");
             return;
         }
 
@@ -512,13 +523,14 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
 
     public void setTrainStation(TrainStation trainStation)
     {
-        if (trainStationTable.contains(trainStation))
+        String trainStationId = trainStation.getId();
+        if (!trainStationTable.containsKey(trainStationId))
         {
-            System.out.println("TrainStation already exists in the database.");
+            System.out.println("No trainStation with id " + trainStationId + " exists in the database.");
             return;
         }
 
-        trainStationTable.put(trainStation.getId(), trainStation);
+        trainStationTable.replace(trainStationId, trainStation);
     }
 
     public TrainStation removeTrainStation(String id)
@@ -536,6 +548,82 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         return trainStationTable.elements();
     }
 
+    public void addPayment(Payment payment)
+    {
+        if (paymentTable.contains(payment))
+        {
+            System.out.println("Payment already exists in the database.");
+            return;
+        }
+
+        paymentTable.put(payment.getId(), payment);
+    }
+
+    public void setPayment(Payment payment)
+    {
+        String paymentId = payment.getId();
+        if (!paymentTable.containsKey(paymentId))
+        {
+            System.out.println("No payment with id " + paymentId + " exists in the database.");
+            return;
+        }
+
+        paymentTable.replace(paymentId, payment);
+    }
+
+    public Payment removePayment(String id)
+    {
+        return paymentTable.remove(id);
+    }
+
+    public Payment getPayment(String id)
+    {
+        return paymentTable.get(id);
+    }
+
+    public Enumeration<Payment> getAllPayments()
+    {
+        return paymentTable.elements();
+    }
+
+    public void addReservation(Reservation reservation)
+    {
+        if (reservationTable.contains(reservation))
+        {
+            System.out.println("Reservation already exists in the database.");
+            return;
+        }
+
+        reservationTable.put(reservation.getReservationNumber(), reservation);
+    }
+
+    public void setReservation(Reservation reservation)
+    {
+        String reservationNumber = reservation.getReservationNumber();
+        if (!reservationTable.containsKey(reservationNumber))
+        {
+            System.out.println("No reservation with number " + reservationNumber + " exists in the database.");
+            return;
+        }
+
+        reservationTable.replace(reservationNumber, reservation);
+    }
+
+    public Reservation removeReservation(String reservationNumber)
+    {
+        return reservationTable.remove(reservationNumber);
+    }
+
+    public Reservation getReservation(String reservationNumber)
+    {
+        return reservationTable.get(reservationNumber);
+    }
+
+    public Enumeration<Reservation> getAllReservations()
+    {
+        return reservationTable.elements();
+    }
+
     private void setTables(TravelBookingDatabase database)
     {
         airportTable = database.airportTable;
@@ -550,6 +638,8 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         flightTable = database.flightTable;
         itineraryTable = database.itineraryTable;
         routeTable = database.routeTable;
+        reservationTable = database.reservationTable;
+        paymentTable = database.paymentTable;
     }
 
     private void clearTables()
@@ -566,5 +656,7 @@ public class TravelBookingDatabase implements Serializable, CompanyDatabase, Inf
         flightTable.clear();
         itineraryTable.clear();
         routeTable.clear();
+        reservationTable.clear();
+        paymentTable.clear();
     }
 }

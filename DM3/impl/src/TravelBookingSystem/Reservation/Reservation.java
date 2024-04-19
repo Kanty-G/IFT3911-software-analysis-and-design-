@@ -2,11 +2,12 @@ package TravelBookingSystem.Reservation;
 
 import TravelBookingSystem.Vehicle.Section;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Reservation
+public class Reservation implements Serializable
 {
-    private final int reservationNumber;
+    private final String reservationNumber;
     private String travelId;
     private String travelSpaceId;
     private Section section;
@@ -14,7 +15,7 @@ public class Reservation
     private Date reservationDate;
     private boolean isConfirmed = false;
 
-    public Reservation(int reservationNumber, String travelId, String travelSpaceId, Section section, SeatingPreference seatingPreference, Date reservationDate)
+    public Reservation(String reservationNumber, String travelId, String travelSpaceId, Section section, SeatingPreference seatingPreference, Date reservationDate)
     {
         this.reservationNumber = reservationNumber;
         this.travelId = travelId;
@@ -24,7 +25,7 @@ public class Reservation
         this.reservationDate = reservationDate;
     }
 
-    public int getReservationNumber()
+    public String getReservationNumber()
     {
         return reservationNumber;
     }
