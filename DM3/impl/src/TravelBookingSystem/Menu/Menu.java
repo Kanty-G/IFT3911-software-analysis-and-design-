@@ -3,10 +3,10 @@ package TravelBookingSystem.Menu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menu implements MenuItem
+public class Menu implements MenuComponent
 {
     private final String menuName;
-    private final ArrayList<MenuItem> menuItems = new ArrayList<>();
+    private final ArrayList<MenuComponent> menuComponents = new ArrayList<>();
 
     public Menu(String menuName)
     {
@@ -16,7 +16,7 @@ public class Menu implements MenuItem
     public Menu(String menuName, Menu parent)
     {
         this.menuName = menuName;
-        menuItems.add(new MenuActionItem("Previous Menu", parent::select));
+        menuComponents.add(new MenuActionItem("Previous Menu", parent::select));
     }
 
     public String getName()
@@ -29,14 +29,14 @@ public class Menu implements MenuItem
         displayMenu();
     }
 
-    public void AddMenuItem(MenuItem menuItem)
+    public void addMenuComponent(MenuComponent menuComponent)
     {
-        menuItems.add(menuItem);
+        menuComponents.add(menuComponent);
     }
 
-    public void RemoveMenuItem(MenuItem menuItem)
+    public void removeMenuComponent(MenuComponent menuComponent)
     {
-        menuItems.remove(menuItem);
+        menuComponents.remove(menuComponent);
     }
 
     private void displayMenu()
@@ -45,10 +45,10 @@ public class Menu implements MenuItem
         System.out.println(menuName);
         System.out.println();
 
-        for (int idx = 0; idx < menuItems.size(); idx++)
+        for (int idx = 0; idx < menuComponents.size(); idx++)
         {
-            MenuItem menuItem = menuItems.get(idx);
-            System.out.println("  " + idx + ". " + menuItem.getName());
+            MenuComponent menuComponent = menuComponents.get(idx);
+            System.out.println("  " + idx + ". " + menuComponent.getName());
         }
 
         selectNextMenuItem();
@@ -76,13 +76,13 @@ public class Menu implements MenuItem
         do {
             System.out.println("Please select an option:");
             selection = scanner.nextLine();
-        } while (!IsValidSelection(selection));
+        } while (!isValidSelection(selection));
 
         int index = Integer.parseInt(selection);
-        menuItems.get(index).select();
+        menuComponents.get(index).select();
     }
 
-    private boolean IsValidSelection(String selection)
+    private boolean isValidSelection(String selection)
     {
         int index = 0;
         try {
@@ -93,6 +93,6 @@ public class Menu implements MenuItem
             return false;
         }
 
-        return index >= 0 && index < menuItems.size();
+        return index >= 0 && index < menuComponents.size();
     }
 }

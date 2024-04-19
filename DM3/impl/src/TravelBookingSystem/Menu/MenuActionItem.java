@@ -1,8 +1,6 @@
 package TravelBookingSystem.Menu;
 
-import TravelBookingSystem.Default.Command;
-
-public class MenuActionItem implements MenuItem
+public class MenuActionItem implements MenuComponent
 {
     private final String actionName;
     private final Action action;

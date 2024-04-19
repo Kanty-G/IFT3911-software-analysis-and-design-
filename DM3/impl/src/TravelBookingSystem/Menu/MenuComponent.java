@@ -1,6 +1,6 @@
 package TravelBookingSystem.Menu;
 
-public interface MenuItem
+public interface MenuComponent
 {
     String getName();
     void select();

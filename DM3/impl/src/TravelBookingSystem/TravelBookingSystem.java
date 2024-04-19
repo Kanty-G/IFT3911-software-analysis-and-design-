@@ -1,7 +1,9 @@
-package TravelBookingSystem.Default;
+package TravelBookingSystem;
 
+import TravelBookingSystem.Controller.AdminController;
+import TravelBookingSystem.Controller.ClientController;
+import TravelBookingSystem.Controller.LoginController;
 import TravelBookingSystem.Database.TravelBookingDatabase;
-import TravelBookingSystem.User.UserController;
 import TravelBookingSystem.View.AdminView;
 import TravelBookingSystem.View.ClientView;
 import TravelBookingSystem.View.LoginView;
@@ -19,7 +21,7 @@ public class TravelBookingSystem
     private ClientView clientView;
     private AdminView adminView;
 
-    private UserController userController;
+    private LoginController loginController;
     private ClientController clientController;
     private AdminController adminController;
 
@@ -35,32 +37,29 @@ public class TravelBookingSystem
 
     public void Start()
     {
-        InitializeDatabase();
-        InitializeControllers();
-        InitializeViews();
-    }
+        initializeDatabase();
+        initializeControllers();
+        initializeViews();
 
-    public void displayFocusedView()
-    {
-        focusedView.display();
+        while(true)
+        {
+            focusedView.display();
+        }
     }
 
     public void openLoggingView()
     {
         focusedView = loginView;
-        focusedView.display();
     }
 
     public void openClientView()
     {
         focusedView = clientView;
-        focusedView.display();
     }
 
     public void openAdminView()
     {
         focusedView = adminView;
-        focusedView.display();
     }
 
     public void exit()
@@ -69,23 +68,23 @@ public class TravelBookingSystem
         System.exit(0);
     }
 
-    private void InitializeDatabase()
+    private void initializeDatabase()
     {
         database = new TravelBookingDatabase();
         database.loadDatabase();
         // TODO: Add observers
     }
 
-    private void InitializeControllers()
+    private void initializeControllers()
     {
-        userController = new UserController();
+        loginController = new LoginController();
         clientController = new ClientController();
         adminController = new AdminController();
     }
 
-    private void InitializeViews()
+    private void initializeViews()
     {
-        loginView = new LoginView(userController);
+        loginView = new LoginView(loginController);
         clientView = new ClientView(clientController);
         adminView = new AdminView(adminController);
         focusedView = loginView;

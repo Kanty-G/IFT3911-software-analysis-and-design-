@@ -1,52 +1,55 @@
 package TravelBookingSystem.View;
 
-import TravelBookingSystem.Default.TravelBookingSystem;
+import TravelBookingSystem.Controller.LoginController;
+import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
-import TravelBookingSystem.User.UserController;
 
 public class LoginView implements View
 {
-    private final UserController userController;
-    private final Menu logInMenu = new Menu("Log In Menu");
+    private final LoginController loginController;
+    private final Menu loginMenu = new Menu("Log In Menu");
 
-    public LoginView(UserController userController)
+    public LoginView(LoginController loginController)
     {
-        this.userController = userController;
-        InitializeLogInMenu();
+        this.loginController = loginController;
+        initializeLogInMenu();
     }
 
     public void display()
     {
-        logInMenu.select();
+        loginMenu.select();
+    }
+
+    private void initializeLogInMenu()
+    {
+        loginMenu.addMenuComponent(new MenuActionItem("Client", this::loginClient));
+        loginMenu.addMenuComponent(makeAdminMenu());
+    }
+
+    private Menu makeAdminMenu()
+    {
+        Menu adminMenu = new Menu("Admin", loginMenu);
+        adminMenu.addMenuComponent(new MenuActionItem("Log In", this::loginAdmin));
+        adminMenu.addMenuComponent(new MenuActionItem("New Admin", this::createAdmin));
+        return adminMenu;
+    }
+
+    private void loginClient()
+    {
+        TravelBookingSystem.getInstance().openClientView();
     }
 
     private void loginAdmin()
     {
-        if (userController.loginAdmin())
+        if (loginController.loginAdmin())
         {
             TravelBookingSystem.getInstance().openAdminView();
         }
-
-        TravelBookingSystem.getInstance().openLoggingView();
     }
 
     private void createAdmin()
     {
-        userController.createAdmin();
-    }
-
-    private void InitializeLogInMenu()
-    {
-        logInMenu.AddMenuItem(new MenuActionItem("Client", TravelBookingSystem.getInstance()::openClientView));
-        logInMenu.AddMenuItem(MakeAdminMenu());
-    }
-
-    private Menu MakeAdminMenu()
-    {
-        Menu adminMenu = new Menu("Admin", logInMenu);
-        adminMenu.AddMenuItem(new MenuActionItem("Log In", this::loginAdmin));
-        adminMenu.AddMenuItem(new MenuActionItem("New Admin", this::createAdmin));
-        return adminMenu;
+        loginController.createAdmin();
     }
 }

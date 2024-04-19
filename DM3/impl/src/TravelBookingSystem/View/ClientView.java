@@ -1,8 +1,8 @@
 package TravelBookingSystem.View;
 
-import TravelBookingSystem.Default.ClientController;
+import TravelBookingSystem.Controller.ClientController;
 import TravelBookingSystem.Default.Observer;
-import TravelBookingSystem.Default.TravelBookingSystem;
+import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
 
@@ -14,7 +14,7 @@ public class ClientView extends Observer implements View
     public ClientView(ClientController clientController)
     {
         this.clientController = clientController;
-        InitializeClientMenu();
+        initializeClientMenu();
     }
 
     public void display()
@@ -22,29 +22,69 @@ public class ClientView extends Observer implements View
         clientMenu.select();
     }
 
-    private void InitializeClientMenu()
+    private void initializeClientMenu()
     {
-        clientMenu.AddMenuItem(MakeCheckAvailableTravelsMenu());
-        clientMenu.AddMenuItem(MakeReservationMenu());
-        clientMenu.AddMenuItem(new MenuActionItem("Make A Payment", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
-        clientMenu.AddMenuItem(new MenuActionItem("Exit", TravelBookingSystem.getInstance()::exit));
+        clientMenu.addMenuComponent(makeCheckAvailableTravelsMenu());
+        clientMenu.addMenuComponent(makeReservationMenu());
+        clientMenu.addMenuComponent(new MenuActionItem("Make A Payment", this::makePayment));
+        clientMenu.addMenuComponent(new MenuActionItem("Exit", this::exit));
     }
 
-    private Menu MakeCheckAvailableTravelsMenu()
+    private Menu makeCheckAvailableTravelsMenu()
     {
         Menu checkMenu = new Menu("Check Available Travels", clientMenu);
-        checkMenu.AddMenuItem(new MenuActionItem("Flights", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
-        checkMenu.AddMenuItem(new MenuActionItem("Cruises", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
-        checkMenu.AddMenuItem(new MenuActionItem("Train Routes", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
+        checkMenu.addMenuComponent(new MenuActionItem("Flights", this::checkFlights));
+        checkMenu.addMenuComponent(new MenuActionItem("Cruises", this::checkCruises));
+        checkMenu.addMenuComponent(new MenuActionItem("Train Routes", this::checkTrainRoutes));
         return checkMenu;
     }
 
-    private Menu MakeReservationMenu()
+    private Menu makeReservationMenu()
     {
         Menu reservationMenu = new Menu("Make A Reservation", clientMenu);
-        reservationMenu.AddMenuItem(new MenuActionItem("Flights", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
-        reservationMenu.AddMenuItem(new MenuActionItem("Cruises", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
-        reservationMenu.AddMenuItem(new MenuActionItem("Train Routes", TravelBookingSystem.getInstance()::displayFocusedView)); // TODO: Route to client controller
+        reservationMenu.addMenuComponent(new MenuActionItem("Flights", this::reserveFlights));
+        reservationMenu.addMenuComponent(new MenuActionItem("Cruises", this::reserveCruises));
+        reservationMenu.addMenuComponent(new MenuActionItem("Train Routes", this::reserveTrainRoutes));
         return reservationMenu;
+    }
+
+    private void exit()
+    {
+        TravelBookingSystem.getInstance().exit();
+    }
+
+    private void makePayment()
+    {
+        clientController.makePayment();
+    }
+
+    private void checkFlights()
+    {
+        clientController.checkFlights();
+    }
+
+    private void checkCruises()
+    {
+        clientController.checkCruises();
+    }
+
+    private void checkTrainRoutes()
+    {
+        clientController.checkTrainRoutes();
+    }
+
+    private void reserveFlights()
+    {
+        clientController.reserveFlights();
+    }
+
+    private void reserveCruises()
+    {
+        clientController.reserveCruises();
+    }
+
+    private void reserveTrainRoutes()
+    {
+        clientController.reserveTrainRoutes();
     }
 }

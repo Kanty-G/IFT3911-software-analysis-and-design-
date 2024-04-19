@@ -1,4 +1,4 @@
-import TravelBookingSystem.Default.TravelBookingSystem;
+import TravelBookingSystem.TravelBookingSystem;
 
 public class Main
 {
