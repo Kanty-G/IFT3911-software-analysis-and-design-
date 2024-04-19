@@ -38,14 +38,14 @@ public class TravelBookingDatabase implements Serializable,
     private Hashtable<String, CruiseItinerary> itineraryTable = new Hashtable<>();
     private Hashtable<String, TrainRoute> routeTable = new Hashtable<>();
 
-    public void LoadDatabase()
+    public void loadDatabase()
     {
         TravelBookingDatabase database = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(databaseFilePath))) {
             database = (TravelBookingDatabase) ois.readObject();
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("Couldn't find database file. Generating new one.");
-            SaveDatabase();
+            saveDatabase();
             return;
         } catch (EOFException eofException) {
             // End of file reached
@@ -62,7 +62,7 @@ public class TravelBookingDatabase implements Serializable,
         SetTables(database);
     }
 
-    public void SaveDatabase()
+    public void saveDatabase()
     {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(databaseFilePath))) {
             objectOutputStream.writeObject(this);
@@ -74,7 +74,7 @@ public class TravelBookingDatabase implements Serializable,
     public void ClearDatabase()
     {
         ClearTables();
-        SaveDatabase();
+        saveDatabase();
     }
 
     public void AddAirplane(Airplane airplane)

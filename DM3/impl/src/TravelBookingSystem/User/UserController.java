@@ -2,10 +2,10 @@ package TravelBookingSystem.User;
 
 public class UserController
 {
-    public void loginAdmin(String email, String password)
+    public boolean loginAdmin()
     {
         // TODO - implement UserController.loginAdmin
-        throw new UnsupportedOperationException();
+        return true;
     }
 
     public void createAdmin()

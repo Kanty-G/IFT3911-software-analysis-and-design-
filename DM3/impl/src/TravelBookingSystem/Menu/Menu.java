@@ -1,6 +1,7 @@
 package TravelBookingSystem.Menu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu implements MenuItem
 {
@@ -40,6 +41,7 @@ public class Menu implements MenuItem
 
     private void displayMenu()
     {
+        clearConsole();
         System.out.println(menuName);
         System.out.println();
 
@@ -48,5 +50,49 @@ public class Menu implements MenuItem
             MenuItem menuItem = menuItems.get(idx);
             System.out.println("  " + idx + ". " + menuItem.getName());
         }
+
+        selectNextMenuItem();
+    }
+
+    private void clearConsole()
+    {
+        try {
+            String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("sh", "-c", "clear").inheritIO().start().waitFor();
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void selectNextMenuItem()
+    {
+        Scanner scanner = new Scanner(System.in);
+        String selection;
+        do {
+            System.out.println("Please select an option:");
+            selection = scanner.nextLine();
+        } while (!IsValidSelection(selection));
+
+        int index = Integer.parseInt(selection);
+        menuItems.get(index).select();
+    }
+
+    private boolean IsValidSelection(String selection)
+    {
+        int index = 0;
+        try {
+            index = Integer.parseInt(selection);
+        }
+        catch (Exception exception)
+        {
+            return false;
+        }
+
+        return index >= 0 && index < menuItems.size();
     }
 }
