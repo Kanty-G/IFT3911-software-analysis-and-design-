@@ -1,9 +1,15 @@
 package TravelBookingSystem;
 
+import TravelBookingSystem.Company.CompanyService;
 import TravelBookingSystem.Controller.AdminController;
 import TravelBookingSystem.Controller.ClientController;
 import TravelBookingSystem.Controller.LoginController;
 import TravelBookingSystem.Database.TravelBookingDatabase;
+import TravelBookingSystem.Infrastructure.InfrastructureService;
+import TravelBookingSystem.Payment.PaymentService;
+import TravelBookingSystem.Reservation.ReservationService;
+import TravelBookingSystem.Travel.TravelService;
+import TravelBookingSystem.Vehicle.TransportVehicleService;
 import TravelBookingSystem.View.AdminView;
 import TravelBookingSystem.View.ClientView;
 import TravelBookingSystem.View.LoginView;
@@ -15,15 +21,22 @@ public class TravelBookingSystem
 
     private TravelBookingDatabase database;
 
-    private View focusedView;
+    private CompanyService companyService;
+    private InfrastructureService infrastructureService;
+    private TransportVehicleService transportVehicleService;
+    private TravelService travelService;
+    private PaymentService paymentService;
+    private ReservationService reservationService;
+
+    private LoginController loginController;
+    private ClientController clientController;
+    private AdminController adminController;
 
     private LoginView loginView;
     private ClientView clientView;
     private AdminView adminView;
 
-    private LoginController loginController;
-    private ClientController clientController;
-    private AdminController adminController;
+    private View focusedView;
 
     public static TravelBookingSystem getInstance()
     {
@@ -38,6 +51,7 @@ public class TravelBookingSystem
     public void Start()
     {
         initializeDatabase();
+        initializeServices();
         initializeControllers();
         initializeViews();
 
@@ -75,11 +89,21 @@ public class TravelBookingSystem
         // TODO: Add observers
     }
 
+    private void initializeServices()
+    {
+        companyService = new CompanyService(database);
+        infrastructureService = new InfrastructureService(database);
+        transportVehicleService = new TransportVehicleService(database);
+        travelService = new TravelService(database);
+        paymentService = new PaymentService();
+        reservationService = new ReservationService();
+    }
+
     private void initializeControllers()
     {
         loginController = new LoginController();
-        clientController = new ClientController();
-        adminController = new AdminController();
+        clientController = new ClientController(paymentService, reservationService, database);
+        adminController = new AdminController(companyService, infrastructureService, transportVehicleService, travelService);
     }
 
     private void initializeViews()

@@ -27,6 +27,7 @@ public class AdminView extends Observer implements View
         adminMenu.addMenuComponent(makeManageCompaniesMenu());
         adminMenu.addMenuComponent(makeManageInfrastructuresMenu());
         adminMenu.addMenuComponent(makeManageTravelsMenu());
+        adminMenu.addMenuComponent(makeManageTransportVehiclesMenu());
         adminMenu.addMenuComponent(new MenuActionItem("Undo Last Operation", this::undo));
         adminMenu.addMenuComponent(new MenuActionItem("Exit", this::exit));
     }
@@ -100,6 +101,41 @@ public class AdminView extends Observer implements View
         manageTrainStationsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrainStation));
         manageTrainStationsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrainStation));
         return manageTrainStationsMenu;
+    }
+
+    private Menu makeManageTransportVehiclesMenu() {
+        Menu manageTransportVehiclesMenu = new Menu("Manage Transport Vehicles", adminMenu);
+        manageTransportVehiclesMenu.addMenuComponent(makeManageAirplanesMenu(manageTransportVehiclesMenu));
+        manageTransportVehiclesMenu.addMenuComponent(makeManageCruisesShipsMenu(manageTransportVehiclesMenu));
+        manageTransportVehiclesMenu.addMenuComponent(makeManageTrainsMenu(manageTransportVehiclesMenu));
+        return manageTransportVehiclesMenu;
+    }
+
+    private Menu makeManageAirplanesMenu(Menu manageTransportVehiclesMenu)
+    {
+        Menu manageAirplanesMenu = new Menu("Manage Airplanes", manageTransportVehiclesMenu);
+        manageAirplanesMenu.addMenuComponent(new MenuActionItem("Add", this::addAirplane));
+        manageAirplanesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyAirplane));
+        manageAirplanesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteAirplane));
+        return manageAirplanesMenu;
+    }
+
+    private Menu makeManageCruisesShipsMenu(Menu manageTransportVehiclesMenu)
+    {
+        Menu manageCruiseShipsMenu = new Menu("Manage Cruise Ships", manageTransportVehiclesMenu);
+        manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("Add", this::addCruiseShip));
+        manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyCruiseShip));
+        manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteCruiseShip));
+        return manageCruiseShipsMenu;
+    }
+
+    private Menu makeManageTrainsMenu(Menu manageTransportVehiclesMenu)
+    {
+        Menu manageTrainsMenu = new Menu("Manage Trains", manageTransportVehiclesMenu);
+        manageTrainsMenu.addMenuComponent(new MenuActionItem("Add", this::addTrain));
+        manageTrainsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrain));
+        manageTrainsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrain));
+        return manageTrainsMenu;
     }
 
     private Menu makeManageTravelsMenu() {
@@ -280,5 +316,50 @@ public class AdminView extends Observer implements View
     private void deleteTrainRoute()
     {
         adminController.deleteTrainRoute();
+    }
+
+    public void addAirplane()
+    {
+        adminController.addAirplane();
+    }
+
+    public void modifyAirplane()
+    {
+        adminController.modifyAirplane();
+    }
+
+    public void deleteAirplane()
+    {
+        adminController.deleteAirplane();
+    }
+
+    public void addCruiseShip()
+    {
+        adminController.addCruiseShip();
+    }
+
+    public void modifyCruiseShip()
+    {
+        adminController.modifyCruiseShip();
+    }
+
+    public void deleteCruiseShip()
+    {
+        adminController.deleteCruiseShip();
+    }
+
+    public void addTrain()
+    {
+        adminController.addTrain();
+    }
+
+    public void modifyTrain()
+    {
+        adminController.modifyTrain();
+    }
+
+    public void deleteTrain()
+    {
+        adminController.deleteTrain();
     }
 }

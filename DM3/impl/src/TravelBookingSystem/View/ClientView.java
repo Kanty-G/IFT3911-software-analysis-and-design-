@@ -42,9 +42,9 @@ public class ClientView extends Observer implements View
     private Menu makeReservationMenu()
     {
         Menu reservationMenu = new Menu("Make A Reservation", clientMenu);
-        reservationMenu.addMenuComponent(new MenuActionItem("Flights", this::reserveFlights));
-        reservationMenu.addMenuComponent(new MenuActionItem("Cruises", this::reserveCruises));
-        reservationMenu.addMenuComponent(new MenuActionItem("Train Routes", this::reserveTrainRoutes));
+        reservationMenu.addMenuComponent(new MenuActionItem("Flights", this::reserveFlight));
+        reservationMenu.addMenuComponent(new MenuActionItem("Cruises", this::reserveCruise));
+        reservationMenu.addMenuComponent(new MenuActionItem("Train Routes", this::reserveTrainRoute));
         return reservationMenu;
     }
 
@@ -73,18 +73,18 @@ public class ClientView extends Observer implements View
         clientController.checkTrainRoutes();
     }
 
-    private void reserveFlights()
+    private void reserveFlight()
     {
-        clientController.reserveFlights();
+        clientController.reserveFlight();
     }
 
-    private void reserveCruises()
+    private void reserveCruise()
     {
-        clientController.reserveCruises();
+        clientController.reserveCruise();
     }
 
-    private void reserveTrainRoutes()
+    private void reserveTrainRoute()
     {
-        clientController.reserveTrainRoutes();
+        clientController.reserveTrainRoute();
     }
 }

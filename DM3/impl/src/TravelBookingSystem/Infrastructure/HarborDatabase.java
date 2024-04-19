@@ -4,9 +4,9 @@ import java.util.Enumeration;
 
 public interface HarborDatabase
 {
-    void AddHarbor(Harbor harbor);
-    void SetHarbor(Harbor harbor);
-    Harbor RemoveHarbor(String id);
-    Harbor GetHarbor(String id);
-    Enumeration<Harbor> GetAllHarbors();
+    void addHarbor(Harbor harbor);
+    void setHarbor(Harbor harbor);
+    Harbor removeHarbor(String id);
+    Harbor getHarbor(String id);
+    Enumeration<Harbor> getAllHarbors();
 }

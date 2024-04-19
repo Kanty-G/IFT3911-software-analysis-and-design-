@@ -9,11 +9,7 @@ import java.io.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class TravelBookingDatabase implements Serializable,
-        AirportCompanyDatabase, CruiseCompanyDatabase, TrainCompanyDatabase,
-        AirportDatabase, HarborDatabase, TrainStationDatabase,
-        AirplaneDatabase, CruiseShipDatabase, TrainDatabase,
-        FlightDatabase, CruiseItineraryDatabase, TrainRouteDatabase
+public class TravelBookingDatabase implements Serializable, CompanyDatabase, InfrastructureDatabase, TransportVehicleDatabase, TravelDatabase
 {
     private static final String databaseFilePath = "./database.data";
     private static final long serialVersionUID = 1L;
@@ -41,16 +37,24 @@ public class TravelBookingDatabase implements Serializable,
     public void loadDatabase()
     {
         TravelBookingDatabase database = null;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(databaseFilePath))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(databaseFilePath)))
+        {
             database = (TravelBookingDatabase) ois.readObject();
-        } catch (FileNotFoundException fileNotFoundException) {
+        }
+        catch (FileNotFoundException fileNotFoundException)
+        {
             System.out.println("Couldn't find database file. Generating new one.");
             saveDatabase();
             return;
-        } catch (EOFException eofException) {
+        }
+        catch (EOFException eofException)
+        {
             // End of file reached
-        } catch (ClassNotFoundException | IOException exception) {
+        }
+        catch (ClassNotFoundException | IOException exception)
+        {
             exception.printStackTrace();
+            return;
         }
 
         if (database == null)
@@ -59,25 +63,28 @@ public class TravelBookingDatabase implements Serializable,
             return;
         }
 
-        SetTables(database);
+        setTables(database);
     }
 
     public void saveDatabase()
     {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(databaseFilePath))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(databaseFilePath)))
+        {
             objectOutputStream.writeObject(this);
-        } catch (IOException ioException) {
+        }
+        catch (IOException ioException)
+        {
             ioException.printStackTrace();
         }
     }
 
     public void ClearDatabase()
     {
-        ClearTables();
+        clearTables();
         saveDatabase();
     }
 
-    public void AddAirplane(Airplane airplane)
+    public void addAirplane(Airplane airplane)
     {
         if (airplaneTable.contains(airplane))
         {
@@ -88,7 +95,7 @@ public class TravelBookingDatabase implements Serializable,
         airplaneTable.put(airplane.getId(), airplane);
     }
 
-    public void SetAirplane(Airplane airplane)
+    public void setAirplane(Airplane airplane)
     {
         String airplaneId = airplane.getId();
         if (!airplaneTable.containsKey(airplaneId))
@@ -100,22 +107,22 @@ public class TravelBookingDatabase implements Serializable,
         airplaneTable.replace(airplaneId, airplane);
     }
 
-    public Airplane RemoveAirplane(String id)
+    public Airplane removeAirplane(String id)
     {
         return airplaneTable.remove(id);
     }
 
-    public Airplane GetAirplane(String id)
+    public Airplane getAirplane(String id)
     {
         return airplaneTable.get(id);
     }
 
-    public Enumeration<Airplane> GetAllAirplanes()
+    public Enumeration<Airplane> getAllAirplanes()
     {
         return airplaneTable.elements();
     }
 
-    public void AddAirportCompany(AirportCompany airportCompany)
+    public void addAirportCompany(AirportCompany airportCompany)
     {
         if (airportCompanyTable.contains(airportCompany))
         {
@@ -126,7 +133,7 @@ public class TravelBookingDatabase implements Serializable,
         airportCompanyTable.put(airportCompany.getId(), airportCompany);
     }
 
-    public void SetAirportCompany(AirportCompany airportCompany)
+    public void setAirportCompany(AirportCompany airportCompany)
     {
         String airportCompanyId = airportCompany.getId();
         if (!airportCompanyTable.containsKey(airportCompanyId))
@@ -138,22 +145,22 @@ public class TravelBookingDatabase implements Serializable,
         airportCompanyTable.replace(airportCompanyId, airportCompany);
     }
 
-    public AirportCompany RemoveAirportCompany(String id)
+    public AirportCompany removeAirportCompany(String id)
     {
         return airportCompanyTable.remove(id);
     }
 
-    public AirportCompany GetAirportCompany(String id)
+    public AirportCompany getAirportCompany(String id)
     {
         return airportCompanyTable.get(id);
     }
 
-    public Enumeration<AirportCompany> GetAllAirportCompanies()
+    public Enumeration<AirportCompany> getAllAirportCompanies()
     {
         return airportCompanyTable.elements();
     }
 
-    public void AddAirport(Airport airport)
+    public void addAirport(Airport airport)
     {
         if (airportTable.contains(airport))
         {
@@ -164,7 +171,7 @@ public class TravelBookingDatabase implements Serializable,
         airportTable.put(airport.getId(), airport);
     }
 
-    public void SetAirport(Airport airport)
+    public void setAirport(Airport airport)
     {
         String airportId = airport.getId();
         if (!airportTable.containsKey(airportId))
@@ -176,22 +183,22 @@ public class TravelBookingDatabase implements Serializable,
         airportTable.replace(airportId, airport);
     }
 
-    public Airport RemoveAirport(String id)
+    public Airport removeAirport(String id)
     {
         return airportTable.remove(id);
     }
 
-    public Airport GetAirport(String id)
+    public Airport getAirport(String id)
     {
         return airportTable.get(id);
     }
 
-    public Enumeration<Airport> GetAllAirports()
+    public Enumeration<Airport> getAllAirports()
     {
         return airportTable.elements();
     }
 
-    public void AddCruiseCompany(CruiseCompany cruiseCompany)
+    public void addCruiseCompany(CruiseCompany cruiseCompany)
     {
         if (cruiseCompanyTable.contains(cruiseCompany))
         {
@@ -202,7 +209,7 @@ public class TravelBookingDatabase implements Serializable,
         cruiseCompanyTable.put(cruiseCompany.getId(), cruiseCompany);
     }
 
-    public void SetCruiseCompany(CruiseCompany cruiseCompany)
+    public void setCruiseCompany(CruiseCompany cruiseCompany)
     {
         String cruiseCompanyId = cruiseCompany.getId();
         if (!cruiseCompanyTable.containsKey(cruiseCompanyId))
@@ -214,22 +221,22 @@ public class TravelBookingDatabase implements Serializable,
         cruiseCompanyTable.replace(cruiseCompanyId, cruiseCompany);
     }
 
-    public CruiseCompany RemoveCruiseCompany(String id)
+    public CruiseCompany removeCruiseCompany(String id)
     {
         return cruiseCompanyTable.remove(id);
     }
 
-    public CruiseCompany GetCruiseCompany(String id)
+    public CruiseCompany getCruiseCompany(String id)
     {
         return cruiseCompanyTable.get(id);
     }
 
-    public Enumeration<CruiseCompany> GetAllCruiseCompanies()
+    public Enumeration<CruiseCompany> getAllCruiseCompanies()
     {
         return cruiseCompanyTable.elements();
     }
 
-    public void AddCruiseItinerary(CruiseItinerary itinerary)
+    public void addCruiseItinerary(CruiseItinerary itinerary)
     {
         if (itineraryTable.contains(itinerary))
         {
@@ -240,7 +247,7 @@ public class TravelBookingDatabase implements Serializable,
         itineraryTable.put(itinerary.getId(), itinerary);
     }
 
-    public void SetCruiseItinerary(CruiseItinerary itinerary)
+    public void setCruiseItinerary(CruiseItinerary itinerary)
     {
         String itineraryId = itinerary.getId();
         if (!itineraryTable.containsKey(itineraryId))
@@ -252,22 +259,22 @@ public class TravelBookingDatabase implements Serializable,
         itineraryTable.replace(itineraryId, itinerary);
     }
 
-    public CruiseItinerary RemoveCruiseItinerary(String id)
+    public CruiseItinerary removeCruiseItinerary(String id)
     {
         return itineraryTable.remove(id);
     }
 
-    public CruiseItinerary GetCruiseItinerary(String id)
+    public CruiseItinerary getCruiseItinerary(String id)
     {
         return itineraryTable.get(id);
     }
 
-    public Enumeration<CruiseItinerary> GetAllCruiseItineraries()
+    public Enumeration<CruiseItinerary> getAllCruiseItineraries()
     {
         return itineraryTable.elements();
     }
 
-    public void AddCruiseShip(CruiseShip cruiseShip)
+    public void addCruiseShip(CruiseShip cruiseShip)
     {
         if (cruiseShipTable.contains(cruiseShip))
         {
@@ -278,7 +285,7 @@ public class TravelBookingDatabase implements Serializable,
         cruiseShipTable.put(cruiseShip.getId(), cruiseShip);
     }
 
-    public void SetCruiseShip(CruiseShip cruiseShip)
+    public void setCruiseShip(CruiseShip cruiseShip)
     {
         String cruiseShipId = cruiseShip.getId();
         if (!cruiseShipTable.containsKey(cruiseShipId))
@@ -290,22 +297,22 @@ public class TravelBookingDatabase implements Serializable,
         cruiseShipTable.replace(cruiseShipId, cruiseShip);
     }
 
-    public CruiseShip RemoveCruiseShip(String id)
+    public CruiseShip removeCruiseShip(String id)
     {
         return cruiseShipTable.remove(id);
     }
 
-    public CruiseShip GetCruiseShip(String id)
+    public CruiseShip getCruiseShip(String id)
     {
         return cruiseShipTable.get(id);
     }
 
-    public Enumeration<CruiseShip> GetAllCruiseShips()
+    public Enumeration<CruiseShip> getAllCruiseShips()
     {
         return cruiseShipTable.elements();
     }
 
-    public void AddFlight(Flight flight)
+    public void addFlight(Flight flight)
     {
         if (flightTable.contains(flight))
         {
@@ -316,7 +323,7 @@ public class TravelBookingDatabase implements Serializable,
         flightTable.put(flight.getId(), flight);
     }
 
-    public void SetFlight(Flight flight)
+    public void setFlight(Flight flight)
     {
         String flightId = flight.getId();
         if (!flightTable.containsKey(flightId))
@@ -328,22 +335,22 @@ public class TravelBookingDatabase implements Serializable,
         flightTable.replace(flightId, flight);
     }
 
-    public Flight RemoveFlight(String id)
+    public Flight removeFlight(String id)
     {
         return flightTable.remove(id);
     }
 
-    public Flight GetFlight(String id)
+    public Flight getFlight(String id)
     {
         return flightTable.get(id);
     }
 
-    public Enumeration<Flight> GetAllFlights()
+    public Enumeration<Flight> getAllFlights()
     {
         return flightTable.elements();
     }
 
-    public void AddHarbor(Harbor harbor)
+    public void addHarbor(Harbor harbor)
     {
         if (harborTable.contains(harbor))
         {
@@ -351,7 +358,7 @@ public class TravelBookingDatabase implements Serializable,
         }
     }
 
-    public void SetHarbor(Harbor harbor)
+    public void setHarbor(Harbor harbor)
     {
         String harborId = harbor.getId();
         if (!harborTable.containsKey(harborId))
@@ -363,22 +370,22 @@ public class TravelBookingDatabase implements Serializable,
         harborTable.replace(harborId, harbor);
     }
 
-    public Harbor RemoveHarbor(String id)
+    public Harbor removeHarbor(String id)
     {
         return harborTable.remove(id);
     }
 
-    public Harbor GetHarbor(String id)
+    public Harbor getHarbor(String id)
     {
         return harborTable.get(id);
     }
 
-    public Enumeration<Harbor> GetAllHarbors()
+    public Enumeration<Harbor> getAllHarbors()
     {
         return harborTable.elements();
     }
 
-    public void AddTrainCompany(TrainCompany trainCompany)
+    public void addTrainCompany(TrainCompany trainCompany)
     {
         if (trainCompanyTable.contains(trainCompany))
         {
@@ -389,7 +396,7 @@ public class TravelBookingDatabase implements Serializable,
         trainCompanyTable.put(trainCompany.getId(), trainCompany);
     }
 
-    public void SetTrainCompany(TrainCompany trainCompany)
+    public void setTrainCompany(TrainCompany trainCompany)
     {
         String trainCompanyId = trainCompany.getId();
         if (!trainCompanyTable.containsKey(trainCompanyId))
@@ -401,22 +408,22 @@ public class TravelBookingDatabase implements Serializable,
         trainCompanyTable.replace(trainCompanyId, trainCompany);
     }
 
-    public TrainCompany RemoveTrainCompany(String id)
+    public TrainCompany removeTrainCompany(String id)
     {
         return trainCompanyTable.remove(id);
     }
 
-    public TrainCompany GetTrainCompany(String id)
+    public TrainCompany getTrainCompany(String id)
     {
         return trainCompanyTable.get(id);
     }
 
-    public Enumeration<TrainCompany> GetAllTrainCompanies()
+    public Enumeration<TrainCompany> getAllTrainCompanies()
     {
         return trainCompanyTable.elements();
     }
 
-    public void AddTrain(Train train)
+    public void addTrain(Train train)
     {
         if (trainTable.contains(train))
         {
@@ -427,7 +434,7 @@ public class TravelBookingDatabase implements Serializable,
         trainTable.put(train.getId(), train);
     }
 
-    public void SetTrain(Train train)
+    public void setTrain(Train train)
     {
         String trainId = train.getId();
         if (!trainTable.containsKey(trainId))
@@ -439,22 +446,22 @@ public class TravelBookingDatabase implements Serializable,
         trainTable.replace(trainId, train);
     }
 
-    public Train RemoveTrain(String id)
+    public Train removeTrain(String id)
     {
         return trainTable.remove(id);
     }
 
-    public Train GetTrain(String id)
+    public Train getTrain(String id)
     {
         return trainTable.get(id);
     }
 
-    public Enumeration<Train> GetAllTrains()
+    public Enumeration<Train> getAllTrains()
     {
         return trainTable.elements();
     }
 
-    public void AddTrainRoute(TrainRoute trainRoute)
+    public void addTrainRoute(TrainRoute trainRoute)
     {
         if (routeTable.contains(trainRoute))
         {
@@ -465,7 +472,7 @@ public class TravelBookingDatabase implements Serializable,
         routeTable.put(trainRoute.getId(), trainRoute);
     }
 
-    public void SetTrainRoute(TrainRoute trainRoute)
+    public void setTrainRoute(TrainRoute trainRoute)
     {
         String routeId = trainRoute.getId();
         if (!routeTable.containsKey(routeId))
@@ -477,22 +484,22 @@ public class TravelBookingDatabase implements Serializable,
         routeTable.replace(routeId, trainRoute);
     }
 
-    public TrainRoute RemoveTrainRoute(String id)
+    public TrainRoute removeTrainRoute(String id)
     {
         return routeTable.remove(id);
     }
 
-    public TrainRoute GetTrainRoute(String id)
+    public TrainRoute getTrainRoute(String id)
     {
         return routeTable.get(id);
     }
 
-    public Enumeration<TrainRoute> GetAllTrainRoutes()
+    public Enumeration<TrainRoute> getAllTrainRoutes()
     {
         return routeTable.elements();
     }
 
-    public void AddTrainStation(TrainStation trainStation)
+    public void addTrainStation(TrainStation trainStation)
     {
         if (trainStationTable.contains(trainStation))
         {
@@ -503,7 +510,7 @@ public class TravelBookingDatabase implements Serializable,
         trainStationTable.put(trainStation.getId(), trainStation);
     }
 
-    public void SetTrainStation(TrainStation trainStation)
+    public void setTrainStation(TrainStation trainStation)
     {
         if (trainStationTable.contains(trainStation))
         {
@@ -514,22 +521,22 @@ public class TravelBookingDatabase implements Serializable,
         trainStationTable.put(trainStation.getId(), trainStation);
     }
 
-    public TrainStation RemoveTrainStation(String id)
+    public TrainStation removeTrainStation(String id)
     {
         return trainStationTable.remove(id);
     }
 
-    public TrainStation GetTrainStation(String id)
+    public TrainStation getTrainStation(String id)
     {
         return trainStationTable.get(id);
     }
 
-    public Enumeration<TrainStation> GetAllTrainStations()
+    public Enumeration<TrainStation> getAllTrainStations()
     {
         return trainStationTable.elements();
     }
 
-    private void SetTables(TravelBookingDatabase database)
+    private void setTables(TravelBookingDatabase database)
     {
         airportTable = database.airportTable;
         harborTable = database.harborTable;
@@ -545,7 +552,7 @@ public class TravelBookingDatabase implements Serializable,
         routeTable = database.routeTable;
     }
 
-    private void ClearTables()
+    private void clearTables()
     {
         airportTable.clear();
         harborTable.clear();

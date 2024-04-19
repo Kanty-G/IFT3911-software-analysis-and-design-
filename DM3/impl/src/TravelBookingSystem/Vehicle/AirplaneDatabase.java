@@ -4,9 +4,9 @@ import java.util.Enumeration;
 
 public interface AirplaneDatabase
 {
-    void AddAirplane(Airplane airplane);
-    void SetAirplane(Airplane airplane);
-    Airplane RemoveAirplane(String id);
-    Airplane GetAirplane(String id);
-    Enumeration<Airplane> GetAllAirplanes();
+    void addAirplane(Airplane airplane);
+    void setAirplane(Airplane airplane);
+    Airplane removeAirplane(String id);
+    Airplane getAirplane(String id);
+    Enumeration<Airplane> getAllAirplanes();
 }

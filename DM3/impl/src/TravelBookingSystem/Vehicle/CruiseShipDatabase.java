@@ -4,9 +4,9 @@ import java.util.Enumeration;
 
 public interface CruiseShipDatabase
 {
-    void AddCruiseShip(CruiseShip cruiseShip);
-    void SetCruiseShip(CruiseShip cruiseShip);
-    CruiseShip RemoveCruiseShip(String id);
-    CruiseShip GetCruiseShip(String id);
-    Enumeration<CruiseShip> GetAllCruiseShips();
+    void addCruiseShip(CruiseShip cruiseShip);
+    void setCruiseShip(CruiseShip cruiseShip);
+    CruiseShip removeCruiseShip(String id);
+    CruiseShip getCruiseShip(String id);
+    Enumeration<CruiseShip> getAllCruiseShips();
 }

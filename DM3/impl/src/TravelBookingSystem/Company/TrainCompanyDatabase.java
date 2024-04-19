@@ -4,9 +4,9 @@ import java.util.Enumeration;
 
 public interface TrainCompanyDatabase
 {
-    void AddTrainCompany(TrainCompany trainCompany);
-    void SetTrainCompany(TrainCompany trainCompany);
-    TrainCompany RemoveTrainCompany(String id);
-    TrainCompany GetTrainCompany(String id);
-    Enumeration<TrainCompany> GetAllTrainCompanies();
+    void addTrainCompany(TrainCompany trainCompany);
+    void setTrainCompany(TrainCompany trainCompany);
+    TrainCompany removeTrainCompany(String id);
+    TrainCompany getTrainCompany(String id);
+    Enumeration<TrainCompany> getAllTrainCompanies();
 }

@@ -4,9 +4,9 @@ import java.util.Enumeration;
 
 public interface TrainRouteDatabase
 {
-    void AddTrainRoute(TrainRoute trainRoute);
-    void SetTrainRoute(TrainRoute trainRoute);
-    TrainRoute RemoveTrainRoute(String id);
-    TrainRoute GetTrainRoute(String id);
-    Enumeration<TrainRoute> GetAllTrainRoutes();
+    void addTrainRoute(TrainRoute trainRoute);
+    void setTrainRoute(TrainRoute trainRoute);
+    TrainRoute removeTrainRoute(String id);
+    TrainRoute getTrainRoute(String id);
+    Enumeration<TrainRoute> getAllTrainRoutes();
 }

@@ -1,10 +1,25 @@
 package TravelBookingSystem.Controller;
 
+import TravelBookingSystem.Payment.PaymentService;
+import TravelBookingSystem.Reservation.ReservationService;
+import TravelBookingSystem.Travel.TravelDatabase;
+
 public class ClientController
 {
+    private final PaymentService paymentService;
+    private final ReservationService reservationService;
+    private final TravelDatabase travelDatabase;
+
+    public ClientController(PaymentService paymentService, ReservationService reservationService, TravelDatabase travelDatabase)
+    {
+        this.paymentService = paymentService;
+        this.reservationService = reservationService;
+        this.travelDatabase = travelDatabase;
+    }
+
     public void makePayment()
     {
-        // TODO
+        paymentService.makePayment();
     }
 
     public void checkFlights()
@@ -22,18 +37,18 @@ public class ClientController
         // TODO
     }
 
-    public void reserveFlights()
+    public void reserveFlight()
     {
-        // TODO
+        reservationService.reserveFlight();
     }
 
-    public void reserveCruises()
+    public void reserveCruise()
     {
-        // TODO
+        reservationService.reserveCruise();
     }
 
-    public void reserveTrainRoutes()
+    public void reserveTrainRoute()
     {
-        // TODO
+        reservationService.reserveTrainRoute();
     }
 }

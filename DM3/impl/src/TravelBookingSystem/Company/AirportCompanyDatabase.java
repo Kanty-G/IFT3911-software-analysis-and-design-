@@ -4,9 +4,9 @@ import java.util.Enumeration;
 
 public interface AirportCompanyDatabase
 {
-    void AddAirportCompany(AirportCompany airportCompany);
-    void SetAirportCompany(AirportCompany airportCompany);
-    AirportCompany RemoveAirportCompany(String id);
-    AirportCompany GetAirportCompany(String id);
-    Enumeration<AirportCompany> GetAllAirportCompanies();
+    void addAirportCompany(AirportCompany airportCompany);
+    void setAirportCompany(AirportCompany airportCompany);
+    AirportCompany removeAirportCompany(String id);
+    AirportCompany getAirportCompany(String id);
+    Enumeration<AirportCompany> getAllAirportCompanies();
 }
