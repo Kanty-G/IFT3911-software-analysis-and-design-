@@ -1,6 +1,6 @@
 package TravelBookingSystem.User;
 
-public class User
+public abstract class User
 {
     private final String firstName;
     private final String lastName;

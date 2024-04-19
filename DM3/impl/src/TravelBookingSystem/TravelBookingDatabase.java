@@ -1,4 +1,4 @@
-package TravelBookingSystem.Database;
+package TravelBookingSystem;
 
 import TravelBookingSystem.Company.*;
 import TravelBookingSystem.Infrastructure.*;
@@ -97,13 +97,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addAirplane(Airplane airplane)
     {
-        if (airplaneTable.contains(airplane))
+        String airplaneId = airplane.getId();
+        if (airplaneTable.containsKey(airplaneId))
         {
-            System.out.println("Airplane already exists in the database.");
+            System.out.println("Airplane with id " + airplaneId + " already exists in the database.");
             return;
         }
 
-        airplaneTable.put(airplane.getId(), airplane);
+        airplaneTable.put(airplaneId, airplane);
     }
 
     public void setAirplane(Airplane airplane)
@@ -135,13 +136,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addAirportCompany(AirportCompany airportCompany)
     {
-        if (airportCompanyTable.contains(airportCompany))
+        String airportCompanyId = airportCompany.getId();
+        if (airportCompanyTable.containsKey(airportCompanyId))
         {
-            System.out.println("AirportCompany already exists in the database.");
+            System.out.println("AirportCompany with id " + airportCompanyId + " already exists in the database.");
             return;
         }
 
-        airportCompanyTable.put(airportCompany.getId(), airportCompany);
+        airportCompanyTable.put(airportCompanyId, airportCompany);
     }
 
     public void setAirportCompany(AirportCompany airportCompany)
@@ -173,13 +175,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addAirport(Airport airport)
     {
-        if (airportTable.contains(airport))
+        String airportId = airport.getId();
+        if (airportTable.containsKey(airportId))
         {
-            System.out.println("Airport already exists in the database.");
+            System.out.println("Airport with id " + airportId + " already exists in the database.");
             return;
         }
 
-        airportTable.put(airport.getId(), airport);
+        airportTable.put(airportId, airport);
     }
 
     public void setAirport(Airport airport)
@@ -211,13 +214,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addCruiseCompany(CruiseCompany cruiseCompany)
     {
-        if (cruiseCompanyTable.contains(cruiseCompany))
+        String cruiseCompanyId = cruiseCompany.getId();
+        if (cruiseCompanyTable.containsKey(cruiseCompanyId))
         {
-            System.out.println("CruiseCompany already exists in the database.");
+            System.out.println("CruiseCompany with id " + cruiseCompanyId + " already exists in the database.");
             return;
         }
 
-        cruiseCompanyTable.put(cruiseCompany.getId(), cruiseCompany);
+        cruiseCompanyTable.put(cruiseCompanyId, cruiseCompany);
     }
 
     public void setCruiseCompany(CruiseCompany cruiseCompany)
@@ -249,13 +253,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addCruiseItinerary(CruiseItinerary itinerary)
     {
-        if (itineraryTable.contains(itinerary))
+        String cruiseItineraryId = itinerary.getId();
+        if (itineraryTable.containsKey(cruiseItineraryId))
         {
-            System.out.println("Itinerary already exists in the database.");
+            System.out.println("CruiseItinerary with id " + cruiseItineraryId + " already exists in the database.");
             return;
         }
 
-        itineraryTable.put(itinerary.getId(), itinerary);
+        itineraryTable.put(cruiseItineraryId, itinerary);
     }
 
     public void setCruiseItinerary(CruiseItinerary itinerary)
@@ -287,13 +292,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addCruiseShip(CruiseShip cruiseShip)
     {
-        if (cruiseShipTable.contains(cruiseShip))
+        String cruiseShipId = cruiseShip.getId();
+        if (cruiseShipTable.containsKey(cruiseShipId))
         {
-            System.out.println("CruiseShip already exists in the database.");
+            System.out.println("CruiseShip with id " + cruiseShipId + " already exists in the database.");
             return;
         }
 
-        cruiseShipTable.put(cruiseShip.getId(), cruiseShip);
+        cruiseShipTable.put(cruiseShipId, cruiseShip);
     }
 
     public void setCruiseShip(CruiseShip cruiseShip)
@@ -325,13 +331,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addFlight(Flight flight)
     {
-        if (flightTable.contains(flight))
+        String flightId = flight.getId();
+        if (flightTable.containsKey(flightId))
         {
-            System.out.println("Flight already exists in the database.");
+            System.out.println("Flight with id " + flightId + " already exists in the database.");
             return;
         }
 
-        flightTable.put(flight.getId(), flight);
+        flightTable.put(flightId, flight);
     }
 
     public void setFlight(Flight flight)
@@ -363,10 +370,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addHarbor(Harbor harbor)
     {
-        if (harborTable.contains(harbor))
+        String harborId = harbor.getId();
+        if (harborTable.containsKey(harborId))
         {
-            System.out.println("Harbor already exists in the database.");
+            System.out.println("Harbor with id " + harborId + " already exists in the database.");
+            return;
         }
+
+        harborTable.put(harborId, harbor);
     }
 
     public void setHarbor(Harbor harbor)
@@ -398,13 +409,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addTrainCompany(TrainCompany trainCompany)
     {
-        if (trainCompanyTable.contains(trainCompany))
+        String trainCompanyId = trainCompany.getId();
+        if (trainCompanyTable.containsKey(trainCompanyId))
         {
-            System.out.println("TrainCompany already exists in the database.");
+            System.out.println("TrainCompany with id " + trainCompanyId + " already exists in the database.");
             return;
         }
 
-        trainCompanyTable.put(trainCompany.getId(), trainCompany);
+        trainCompanyTable.put(trainCompanyId, trainCompany);
     }
 
     public void setTrainCompany(TrainCompany trainCompany)
@@ -436,13 +448,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addTrain(Train train)
     {
-        if (trainTable.contains(train))
+        String trainId = train.getId();
+        if (trainTable.containsKey(trainId))
         {
-            System.out.println("Train already exists in the database.");
+            System.out.println("Train with id " + trainId + " already exists in the database.");
             return;
         }
 
-        trainTable.put(train.getId(), train);
+        trainTable.put(trainId, train);
     }
 
     public void setTrain(Train train)
@@ -474,13 +487,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addTrainRoute(TrainRoute trainRoute)
     {
-        if (routeTable.contains(trainRoute))
+        String trainRouteId = trainRoute.getId();
+        if (routeTable.containsKey(trainRouteId))
         {
-            System.out.println("Route already exists in the database.");
+            System.out.println("Route with id " + trainRouteId + " already exists in the database.");
             return;
         }
 
-        routeTable.put(trainRoute.getId(), trainRoute);
+        routeTable.put(trainRouteId, trainRoute);
     }
 
     public void setTrainRoute(TrainRoute trainRoute)
@@ -512,13 +526,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addTrainStation(TrainStation trainStation)
     {
-        if (trainStationTable.contains(trainStation))
+        String trainStationId = trainStation.getId();
+        if (trainStationTable.containsKey(trainStationId))
         {
-            System.out.println("TrainStation already exists in the database.");
+            System.out.println("TrainStation with id " + trainStationId + " already exists in the database.");
             return;
         }
 
-        trainStationTable.put(trainStation.getId(), trainStation);
+        trainStationTable.put(trainStationId, trainStation);
     }
 
     public void setTrainStation(TrainStation trainStation)
@@ -550,13 +565,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addPayment(Payment payment)
     {
-        if (paymentTable.contains(payment))
+        String paymentId = payment.getId();
+        if (paymentTable.containsKey(paymentId))
         {
-            System.out.println("Payment already exists in the database.");
+            System.out.println("Payment with id " + paymentId + " already exists in the database.");
             return;
         }
 
-        paymentTable.put(payment.getId(), payment);
+        paymentTable.put(paymentId, payment);
     }
 
     public void setPayment(Payment payment)
@@ -588,13 +604,14 @@ public class TravelBookingDatabase implements Serializable,
 
     public void addReservation(Reservation reservation)
     {
-        if (reservationTable.contains(reservation))
+        String reservationNumber = reservation.getReservationNumber();
+        if (reservationTable.containsKey(reservationNumber))
         {
-            System.out.println("Reservation already exists in the database.");
+            System.out.println("Reservation with number " + reservationNumber + " already exists in the database.");
             return;
         }
 
-        reservationTable.put(reservation.getReservationNumber(), reservation);
+        reservationTable.put(reservationNumber, reservation);
     }
 
     public void setReservation(Reservation reservation)

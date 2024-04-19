@@ -1,12 +1,11 @@
 package TravelBookingSystem.View;
 
 import TravelBookingSystem.Controller.ClientController;
-import TravelBookingSystem.Default.Observer;
 import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
 
-public class ClientView extends Observer implements View
+public class ClientView implements View
 {
     private final ClientController clientController;
     private final Menu clientMenu = new Menu("Main Menu");

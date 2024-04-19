@@ -1,8 +1,7 @@
 package TravelBookingSystem.View;
 
 import TravelBookingSystem.Controller.AdminController;
-import TravelBookingSystem.Database.TravelBookingDatabase;
-import TravelBookingSystem.Default.Observer;
+import TravelBookingSystem.TravelBookingDatabase;
 import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
@@ -10,7 +9,7 @@ import TravelBookingSystem.Menu.MenuActionItem;
 import java.io.IOException;
 import java.util.Enumeration;
 
-public class AdminView extends Observer implements View
+public class AdminView implements View
 {
     // TODO: Remove and replace with a DataExplorer using a visitor
     private final TravelBookingDatabase travelBookingDatabase;

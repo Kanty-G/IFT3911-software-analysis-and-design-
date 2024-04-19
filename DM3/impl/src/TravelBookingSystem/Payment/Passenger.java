@@ -1,4 +1,4 @@
-package TravelBookingSystem.Default;
+package TravelBookingSystem.Payment;
 
 public class Passenger {
 

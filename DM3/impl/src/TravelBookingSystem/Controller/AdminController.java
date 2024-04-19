@@ -1,12 +1,9 @@
 package TravelBookingSystem.Controller;
 
 import TravelBookingSystem.Company.CompanyService;
-import TravelBookingSystem.Default.Command;
 import TravelBookingSystem.Infrastructure.InfrastructureService;
 import TravelBookingSystem.Travel.TravelService;
 import TravelBookingSystem.Vehicle.TransportVehicleService;
-
-import java.util.Stack;
 
 public class AdminController
 {
@@ -14,8 +11,6 @@ public class AdminController
     private final InfrastructureService infrastructureService;
     private final TransportVehicleService transportVehicleService;
     private final TravelService travelService;
-
-    private final Stack<Command> commandHistory = new Stack<>();
 
     public AdminController(CompanyService companyService, InfrastructureService infrastructureService, TransportVehicleService transportVehicleService, TravelService travelService)
     {

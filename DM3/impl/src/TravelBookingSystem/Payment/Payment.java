@@ -1,7 +1,5 @@
 package TravelBookingSystem.Payment;
 
-import TravelBookingSystem.Default.Passenger;
-
 import java.io.Serializable;
 import java.util.Date;
 
