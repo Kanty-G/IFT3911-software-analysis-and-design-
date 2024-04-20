@@ -1,5 +1,7 @@
 package TravelBookingSystem.Infrastructure;
 
+import java.util.Enumeration;
+
 public class InfrastructureService
 {
     private InfrastructureDatabase infrastructureDatabase;
@@ -9,48 +11,64 @@ public class InfrastructureService
         this.infrastructureDatabase = infrastructureDatabase;
     }
 
-    public void addAirport()
+
+    public void addAirport(Airport airport)
     {
-        // TODO
+        infrastructureDatabase.addAirport(airport);
     }
 
-    public void modifyAirport()
+    public Airport removeAirport(String id)
     {
-        // TODO
+        return infrastructureDatabase.removeAirport(id);
     }
 
-    public void deleteAirport()
+    public Airport getAirport(String id)
     {
-        // TODO
+        return infrastructureDatabase.getAirport(id);
     }
 
-    public void addHarbor()
+    public Enumeration<Airport> getAllAirports()
     {
-        // TODO
+        return infrastructureDatabase.getAllAirports();
     }
 
-    public void modifyHarbor()
+    public void addHarbor(Harbor harbor)
     {
-        // TODO
+        infrastructureDatabase.addHarbor(harbor);
     }
 
-    public void deleteHarbor()
+    public Harbor removeHarbor(String id)
     {
-        // TODO
+        return infrastructureDatabase.removeHarbor(id);
     }
 
-    public void addTrainStation()
+    public Harbor getHarbor(String id)
     {
-        // TODO
+        return infrastructureDatabase.getHarbor(id);
     }
 
-    public void modifyTrainStation()
+    public Enumeration<Harbor> getAllHarbors()
     {
-        // TODO
+        return infrastructureDatabase.getAllHarbors();
     }
 
-    public void deleteTrainStation()
+    public void addTrainStation(TrainStation trainStation)
     {
-        // TODO
+        infrastructureDatabase.addTrainStation(trainStation);
+    }
+
+    public TrainStation removeTrainStation(String id)
+    {
+        return infrastructureDatabase.removeTrainStation(id);
+    }
+
+    public TrainStation getTrainStation(String id)
+    {
+        return infrastructureDatabase.getTrainStation(id);
+    }
+
+    public Enumeration<TrainStation> getAllTrainStations()
+    {
+        return infrastructureDatabase.getAllTrainStations();
     }
 }

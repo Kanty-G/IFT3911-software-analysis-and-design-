@@ -6,6 +6,8 @@ public class TrainStation extends Infrastructure implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
+    public TrainStation() { } // For Serialization
+
     public TrainStation(String id, String city)
     {
         super(id, city);

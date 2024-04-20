@@ -3,7 +3,7 @@ package TravelBookingSystem.Controller;
 import TravelBookingSystem.Command.Command;
 import TravelBookingSystem.Company.*;
 import TravelBookingSystem.Console.ConsoleUtils;
-import TravelBookingSystem.Infrastructure.InfrastructureService;
+import TravelBookingSystem.Infrastructure.*;
 import TravelBookingSystem.Travel.TravelService;
 import TravelBookingSystem.Vehicle.TransportVehicleService;
 
@@ -104,56 +104,65 @@ public class AdminController
 
     public void addAirport()
     {
-        // TODO: Convert to command
-        infrastructureService.addAirport();
+        Command command = new AddAirportCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyAirport()
     {
-        // TODO: Convert to command
-        infrastructureService.modifyAirport();
+        Command command = new ModifyAirportCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteAirport()
     {
-        // TODO: Convert to command
-        infrastructureService.deleteAirport();
+        Command command = new RemoveAirportCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addHarbor()
     {
-        // TODO: Convert to command
-        infrastructureService.addHarbor();
+        Command command = new AddHarborCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyHarbor()
     {
-        // TODO: Convert to command
-        infrastructureService.modifyHarbor();
+        Command command = new ModifyHarborCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteHarbor()
     {
-        // TODO: Convert to command
-        infrastructureService.deleteHarbor();
+        Command command = new RemoveHarborCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addTrainStation()
     {
-        // TODO: Convert to command
-        infrastructureService.addTrainStation();
+        Command command = new AddTrainStationCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyTrainStation()
     {
-        // TODO: Convert to command
-        infrastructureService.modifyTrainStation();
+        Command command = new ModifyTrainStationCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteTrainStation()
     {
-        // TODO: Convert to command
-        infrastructureService.deleteTrainStation();
+        Command command = new RemoveTrainStationCommand(infrastructureService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addFlight()
