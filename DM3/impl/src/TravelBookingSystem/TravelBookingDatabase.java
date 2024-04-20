@@ -45,6 +45,8 @@ public class TravelBookingDatabase implements Serializable,
     private Hashtable<String, Reservation> reservationTable = new Hashtable<>();
     private Hashtable<String, Payment> paymentTable = new Hashtable<>();
 
+    public TravelBookingDatabase() {}
+
     public void loadDatabase()
     {
         TravelBookingDatabase database = null;

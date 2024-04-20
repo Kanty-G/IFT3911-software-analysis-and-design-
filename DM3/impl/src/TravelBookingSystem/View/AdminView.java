@@ -1,13 +1,11 @@
 package TravelBookingSystem.View;
 
+import TravelBookingSystem.Console.ConsoleUtils;
 import TravelBookingSystem.Controller.AdminController;
 import TravelBookingSystem.TravelBookingDatabase;
 import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
-
-import java.io.IOException;
-import java.util.Enumeration;
 
 public class AdminView implements View
 {
@@ -399,84 +397,73 @@ public class AdminView implements View
 
     private void printAllAirportCompanies()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllAirportCompanies());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllAirportCompanies());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllCruiseCompanies()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllCruiseCompanies());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllCruiseCompanies());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllTrainCompanies()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrainCompanies());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllTrainCompanies());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllAirports()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllAirports());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllAirports());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllHarbors()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllHarbors());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllHarbors());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllTrainStations()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrainStations());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllTrainStations());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllFlights()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllFlights());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllFlights());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllCruiseItineraries()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllCruiseItineraries());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllCruiseItineraries());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllTrainRoutes()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrainRoutes());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllTrainRoutes());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllAirplanes()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllAirplanes());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllAirplanes());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllCruiseShips()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllCruiseShips());
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllCruiseShips());
+        ConsoleUtils.WaitForInput();
     }
 
     private void printAllTrains()
     {
-        printAllElementsAndWaitForInput(travelBookingDatabase.getAllTrains());
-    }
-
-    // TODO : Move to a generic util
-    private static void printAllElementsAndWaitForInput(Enumeration<?> elements)
-    {
-        System.out.println("---------------");
-
-        while(elements.hasMoreElements())
-        {
-            System.out.println(" -  " + elements.nextElement());
-        }
-
-        System.out.println("---------------");
-        System.out.println("Press Enter to continue...");
-
-        try
-        {
-            System.in.read(); // Wait for any input
-        }
-        catch (IOException ioException)
-        {
-            ioException.printStackTrace();
-        }
+        ConsoleUtils.printAllElements(travelBookingDatabase.getAllTrains());
+        ConsoleUtils.WaitForInput();
     }
 }

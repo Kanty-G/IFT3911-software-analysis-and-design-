@@ -1,9 +1,15 @@
 package TravelBookingSystem.Company;
 
-public class Company
+import java.io.Serializable;
+
+public class Company implements Serializable
 {
-    private final String id;
-    private final String name;
+    private static final long serialVersionUID = 1L;
+
+    private String id;
+    private String name;
+
+    public Company() { } // For Deserialization
 
     public Company(String id, String name)
     {
@@ -19,5 +25,16 @@ public class Company
     public String getName()
     {
         return name;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Company{" + "id=" + id + ", name=" + name + '}';
+    }
+
+    public static boolean isValidId(String id)
+    {
+        return id != null && id.length() <= 6;
     }
 }

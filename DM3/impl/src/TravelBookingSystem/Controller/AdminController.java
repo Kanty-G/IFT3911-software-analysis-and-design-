@@ -1,9 +1,13 @@
 package TravelBookingSystem.Controller;
 
-import TravelBookingSystem.Company.CompanyService;
+import TravelBookingSystem.Command.Command;
+import TravelBookingSystem.Company.*;
+import TravelBookingSystem.Console.ConsoleUtils;
 import TravelBookingSystem.Infrastructure.InfrastructureService;
 import TravelBookingSystem.Travel.TravelService;
 import TravelBookingSystem.Vehicle.TransportVehicleService;
+
+import java.util.Stack;
 
 public class AdminController
 {
@@ -11,6 +15,8 @@ public class AdminController
     private final InfrastructureService infrastructureService;
     private final TransportVehicleService transportVehicleService;
     private final TravelService travelService;
+
+    private final Stack<Command> commandHistory = new Stack<>();
 
     public AdminController(CompanyService companyService, InfrastructureService infrastructureService, TransportVehicleService transportVehicleService, TravelService travelService)
     {
@@ -22,61 +28,75 @@ public class AdminController
 
     public void undo()
     {
-        // TODO
+        if (commandHistory.isEmpty())
+        {
+            System.out.println("Nothing to undo");
+            ConsoleUtils.WaitForInput();
+            return;
+        }
+
+        Command command = commandHistory.pop();
+        command.undo();
     }
 
     public void addAirportCompany()
     {
-        // TODO: Convert to command
-        companyService.addAirportCompany();
+        Command command = new AddAirportCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyAirportCompany()
     {
         // TODO: Convert to command
-        companyService.modifyAirportCompany();
+        // companyService.modifyAirportCompany();
     }
 
     public void deleteAirportCompany()
     {
-        // TODO: Convert to command
-        companyService.deleteAirportCompany();
+        Command command = new RemoveAirportCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addCruiseCompany()
     {
-        // TODO: Convert to command
-        companyService.addCruiseCompany();
+        Command command = new AddCruiseCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyCruiseCompany()
     {
         // TODO: Convert to command
-        companyService.modifyCruiseCompany();
+        // companyService.modifyCruiseCompany();
     }
 
     public void deleteCruiseCompany()
     {
-        // TODO: Convert to command
-        companyService.deleteCruiseCompany();
+        Command command = new RemoveCruiseCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addTrainCompany()
     {
-        // TODO: Convert to command
-        companyService.addTrainCompany();
+        Command command = new AddTrainCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyTrainCompany()
     {
         // TODO: Convert to command
-        companyService.modifyTrainCompany();
+        // companyService.modifyTrainCompany();
     }
 
     public void deleteTrainCompany()
     {
-        // TODO: Convert to command
-        companyService.deleteTrainCompany();
+        Command command = new RemoveTrainCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addAirport()

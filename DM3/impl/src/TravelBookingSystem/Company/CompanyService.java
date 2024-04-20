@@ -1,5 +1,7 @@
 package TravelBookingSystem.Company;
 
+import java.util.Enumeration;
+
 public class CompanyService
 {
     private CompanyDatabase companyDatabase;
@@ -9,48 +11,63 @@ public class CompanyService
         this.companyDatabase = companyDatabase;
     }
 
-    public void addAirportCompany()
+    public void addAirportCompany(AirportCompany airportCompany)
     {
-        // TODO
+        companyDatabase.addAirportCompany(airportCompany);
     }
 
-    public void modifyAirportCompany()
+    public AirportCompany removeAirportCompany(String id)
     {
-        // TODO
+        return companyDatabase.removeAirportCompany(id);
     }
 
-    public void deleteAirportCompany()
+    public AirportCompany getAirportCompany(String id)
     {
-        // TODO
+        return companyDatabase.getAirportCompany(id);
     }
 
-    public void addCruiseCompany()
+    public Enumeration<AirportCompany> getAllAirportCompanies()
     {
-        // TODO
+        return companyDatabase.getAllAirportCompanies();
     }
 
-    public void modifyCruiseCompany()
+    public void addCruiseCompany(CruiseCompany cruiseCompany)
     {
-        // TODO
+        companyDatabase.addCruiseCompany(cruiseCompany);
     }
 
-    public void deleteCruiseCompany()
+    public CruiseCompany removeCruiseCompany(String id)
     {
-        // TODO
+        return companyDatabase.removeCruiseCompany(id);
     }
 
-    public void addTrainCompany()
+    public CruiseCompany getCruiseCompany(String id)
     {
-        // TODO
+        return companyDatabase.getCruiseCompany(id);
     }
 
-    public void modifyTrainCompany()
+    public Enumeration<CruiseCompany> getAllCruiseCompanies()
     {
-        // TODO
+        return companyDatabase.getAllCruiseCompanies();
     }
 
-    public void deleteTrainCompany()
+    public void addTrainCompany(TrainCompany trainCompany)
     {
-        // TODO
+        companyDatabase.addTrainCompany(trainCompany);
+    }
+
+    public TrainCompany removeTrainCompany(String id)
+    {
+        return companyDatabase.removeTrainCompany(id);
+    }
+
+    public TrainCompany getTrainCompany(String id)
+    {
+        return companyDatabase.getTrainCompany(id);
+    }
+
+    public Enumeration<TrainCompany> getAllTrainCompanies()
+    {
+        return companyDatabase.getAllTrainCompanies();
     }
 }
