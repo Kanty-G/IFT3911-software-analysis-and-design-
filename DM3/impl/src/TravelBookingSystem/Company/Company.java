@@ -27,6 +27,21 @@ public class Company implements Serializable
         return name;
     }
 
+    public void setName(String newName)
+    {
+        name = newName;
+    }
+
+    public CompanyMemento getMemento()
+    {
+        return new CompanyMemento(name);
+    }
+
+    public void restoreFromMemento(CompanyMemento memento)
+    {
+        name = memento.getName();
+    }
+
     @Override
     public String toString()
     {

@@ -48,8 +48,9 @@ public class AdminController
 
     public void modifyAirportCompany()
     {
-        // TODO: Convert to command
-        // companyService.modifyAirportCompany();
+        Command command = new ModifyAirportCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteAirportCompany()
@@ -68,8 +69,9 @@ public class AdminController
 
     public void modifyCruiseCompany()
     {
-        // TODO: Convert to command
-        // companyService.modifyCruiseCompany();
+        Command command = new ModifyCruiseCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteCruiseCompany()
@@ -88,8 +90,9 @@ public class AdminController
 
     public void modifyTrainCompany()
     {
-        // TODO: Convert to command
-        // companyService.modifyTrainCompany();
+        Command command = new ModifyTrainCompanyCommand(companyService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteTrainCompany()
