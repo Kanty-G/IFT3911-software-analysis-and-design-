@@ -1,6 +1,8 @@
 package TravelBookingSystem.View;
 
-public interface View
+import TravelBookingSystem.Observer.Observer;
+
+public interface View extends Observer
 {
     void display();
 }

@@ -16,6 +16,11 @@ public class LoginView implements View
         initializeLogInMenu();
     }
 
+    public void update()
+    {
+        // This would be used in a GUI
+    }
+
     public void display()
     {
         loginMenu.select();

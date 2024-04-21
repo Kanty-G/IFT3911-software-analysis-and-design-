@@ -16,6 +16,11 @@ public class ClientView implements View
         initializeClientMenu();
     }
 
+    public void update()
+    {
+        // This would be used in a GUI
+    }
+
     public void display()
     {
         clientMenu.select();

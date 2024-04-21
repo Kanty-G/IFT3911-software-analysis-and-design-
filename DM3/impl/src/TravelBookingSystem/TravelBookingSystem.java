@@ -85,7 +85,6 @@ public class TravelBookingSystem
     {
         database = new TravelBookingDatabase();
         database.loadDatabase();
-        // TODO: Add observers
     }
 
     private void initializeServices()
@@ -110,6 +109,10 @@ public class TravelBookingSystem
         loginView = new LoginView(loginController);
         clientView = new ClientView(clientController);
         adminView = new AdminView(adminController, database);
+
+        database.register(clientView);
+        database.register(adminView);
+
         focusedView = loginView;
         focusedView.display();
     }

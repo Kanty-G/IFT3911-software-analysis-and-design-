@@ -22,6 +22,11 @@ public class AdminView implements View
         initializeAdminMenu();
     }
 
+    public void update()
+    {
+        // This would be used in a GUI
+    }
+
     public void display()
     {
         adminMenu.select();
