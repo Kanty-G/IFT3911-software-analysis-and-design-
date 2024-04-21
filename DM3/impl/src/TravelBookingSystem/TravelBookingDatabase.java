@@ -24,7 +24,7 @@ public class TravelBookingDatabase implements Serializable, Subject,
     private static final String databaseFilePath = "./database.data";
     private static final long serialVersionUID = 1L;
 
-    private ArrayList<Observer> observers = new ArrayList<>();
+    private final transient ArrayList<Observer> observers = new ArrayList<>();
 
     // Companies
     private Hashtable<String, AirportCompany> airportCompanyTable = new Hashtable<>();

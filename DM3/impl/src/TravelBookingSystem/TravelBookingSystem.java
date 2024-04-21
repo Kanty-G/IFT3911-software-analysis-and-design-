@@ -113,7 +113,6 @@ public class TravelBookingSystem
         database.register(clientView);
         database.register(adminView);
 
-        focusedView = loginView;
-        focusedView.display();
+        openLoggingView();
     }
 }
