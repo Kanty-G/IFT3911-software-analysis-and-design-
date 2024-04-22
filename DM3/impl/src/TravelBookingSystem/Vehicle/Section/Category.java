@@ -7,7 +7,7 @@ public enum Category
     ECONOMY,
     ECONOMY_PREMIUM,
 
-    INSIDE,
+    INNER,
     OCEAN_VIEW,
     SUITE,
     FAMILY,
