@@ -3,6 +3,12 @@ package TravelBookingSystem.Vehicle.Section;
 public class Available extends TravelSpaceState
 {
     @Override
+    public boolean isAvailable()
+    {
+        return true;
+    }
+
+    @Override
     public void reserveSpace(TravelSpace space)
     {
         space.setState(new Reserved());
