@@ -2,6 +2,6 @@ package TravelBookingSystem.Reservation;
 
 public enum SeatingPreference
 {
-    WING,
+    AISLE,
     WINDOW,
 }

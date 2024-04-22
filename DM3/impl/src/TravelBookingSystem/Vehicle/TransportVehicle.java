@@ -1,11 +1,13 @@
 package TravelBookingSystem.Vehicle;
 
+import TravelBookingSystem.Travel.Visitor.TravelVisitor;
+import TravelBookingSystem.Travel.Visitor.Visitable;
 import TravelBookingSystem.Vehicle.Section.Section;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class TransportVehicle implements Serializable
+public abstract class TransportVehicle implements Serializable, Visitable
 {
     private static final long serialVersionUID = 1L;
 
@@ -28,5 +30,13 @@ public abstract class TransportVehicle implements Serializable
     public ArrayList<Section> getSections()
     {
         return sections;
+    }
+
+    public void accept(TravelVisitor visitor)
+    {
+        for (Section section : sections)
+        {
+            section.accept(visitor);
+        }
     }
 }

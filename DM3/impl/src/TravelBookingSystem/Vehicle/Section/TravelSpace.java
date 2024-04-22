@@ -1,9 +1,30 @@
 package TravelBookingSystem.Vehicle.Section;
 
-public abstract class TravelSpace
+import java.io.Serializable;
+
+public abstract class TravelSpace implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private String id;
-    private TravelSpaceState spaceState;
+    private TravelSpaceState spaceState = new Available();
+
+    public TravelSpace() { } // For Serialization
+
+    public TravelSpace(String id)
+    {
+        this.id = id;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public boolean isAvailable()
+    {
+        return spaceState.isAvailable();
+    }
 
     public void setState(TravelSpaceState state)
     {
