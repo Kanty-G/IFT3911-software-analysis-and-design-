@@ -2,7 +2,7 @@ package TravelBookingSystem.Infrastructure;
 
 import TravelBookingSystem.Console.ConsoleUtils;
 
-public class HarborFactory
+public class HarborFactory implements InfrastructureFactory
 {
     private static HarborFactory instance;
 

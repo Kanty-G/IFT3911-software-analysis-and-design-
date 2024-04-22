@@ -2,7 +2,7 @@ package TravelBookingSystem.Company;
 
 import TravelBookingSystem.Console.ConsoleUtils;
 
-public class CruiseCompanyFactory
+public class CruiseCompanyFactory implements CompanyFactory
 {
     private static CruiseCompanyFactory instance;
 
