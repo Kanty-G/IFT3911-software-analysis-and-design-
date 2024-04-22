@@ -1,4 +1,4 @@
-package TravelBookingSystem.Vehicle;
+package TravelBookingSystem.Vehicle.Section;
 
 public enum SeatType
 {

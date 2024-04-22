@@ -1,23 +1,32 @@
 package TravelBookingSystem.Vehicle;
 
-public abstract class TransportVehicle
+import TravelBookingSystem.Vehicle.Section.Section;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public abstract class TransportVehicle implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private String id;
-    private int numberOfColumn;
-    private int numberOfRow;
+    private ArrayList<Section> sections = new ArrayList<>();
+
+    public TransportVehicle() { } // For Serialization
+
+    public TransportVehicle(String id, ArrayList<Section> sections)
+    {
+        this.id = id;
+        this.sections = sections;
+    }
 
     public String getId()
     {
         return id;
     }
 
-    public int getNumberOfColumn()
+    public ArrayList<Section> getSections()
     {
-        return numberOfColumn;
-    }
-
-    public int getNumberOfRow()
-    {
-        return numberOfRow;
+        return sections;
     }
 }

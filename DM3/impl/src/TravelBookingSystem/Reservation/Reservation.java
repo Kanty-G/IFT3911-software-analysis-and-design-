@@ -1,6 +1,6 @@
 package TravelBookingSystem.Reservation;
 
-import TravelBookingSystem.Vehicle.Section;
+import TravelBookingSystem.Vehicle.Section.Section;
 
 import java.io.Serializable;
 import java.util.Date;

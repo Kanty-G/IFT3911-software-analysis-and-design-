@@ -1,4 +1,4 @@
-package TravelBookingSystem.Vehicle;
+package TravelBookingSystem.Vehicle.Section;
 
 public enum Category
 {
@@ -6,10 +6,10 @@ public enum Category
     BUSINESS,
     ECONOMY,
     ECONOMY_PREMIUM,
+
     INSIDE,
     OCEAN_VIEW,
     SUITE,
     FAMILY,
     FAMILY_DELUXE,
-    LITERAL,
 }
