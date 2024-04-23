@@ -12,4 +12,10 @@ public class Airport extends Infrastructure implements Serializable
     {
         super(id, city);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Airport: {" + "id=" + this.getId() + ", city=" + this.getCity() + '}';
+    }
 }

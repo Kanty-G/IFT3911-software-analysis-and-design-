@@ -12,4 +12,10 @@ public class AirportCompany extends Company implements Serializable
     {
         super(id, name);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Airport Company: {" + "id=" + this.getId() + ", name=" + this.getName() + '}';
+    }
 }

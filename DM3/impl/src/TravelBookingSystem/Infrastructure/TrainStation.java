@@ -12,4 +12,10 @@ public class TrainStation extends Infrastructure implements Serializable
     {
         super(id, city);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Train Station: {" + "id=" + this.getId() + ", city=" + this.getCity() + '}';
+    }
 }

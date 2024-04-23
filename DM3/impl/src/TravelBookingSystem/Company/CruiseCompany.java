@@ -12,4 +12,10 @@ public class CruiseCompany extends Company implements Serializable
     {
         super(id, name);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Cruise Company: {" + "id=" + this.getId() + ", name=" + this.getName() + '}';
+    }
 }

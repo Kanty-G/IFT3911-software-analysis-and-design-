@@ -42,12 +42,6 @@ public class Company implements Serializable
         name = memento.getName();
     }
 
-    @Override
-    public String toString()
-    {
-        return "Company{" + "id=" + id + ", name=" + name + '}';
-    }
-
     public static boolean isValidId(String id)
     {
         return id != null && id.length() <= 6;

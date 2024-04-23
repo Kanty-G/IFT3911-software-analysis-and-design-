@@ -12,4 +12,10 @@ public class Harbor extends Infrastructure implements Serializable
     {
         super(id, city);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Harbor: {" + "id=" + this.getId() + ", city=" + this.getCity() + '}';
+    }
 }

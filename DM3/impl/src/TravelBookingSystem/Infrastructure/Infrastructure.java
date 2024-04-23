@@ -42,12 +42,6 @@ public class Infrastructure implements Serializable
         city = memento.getCity();
     }
 
-    @Override
-    public String toString()
-    {
-        return "Infrastructure {id=" + id + ", city=" + city + "}";
-    }
-
     public static boolean isValidId(String id)
     {
         return id != null && id.length() == 3;
