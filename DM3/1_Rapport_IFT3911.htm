@@ -199,11 +199,6 @@
     </h3>
 
 
-
-
-
-    
-
   
 
     <h2> Tâche 2 : Qualité du design</h2>
@@ -238,7 +233,6 @@
                     TravelBookingDatabase permet de maintenir une cohérence entre les différentes vues car lorsqu'un changement se produit il déclenche
                     automatiquement une notification vers les observateurs inscrits. Ainsi, la mise à jour et la synchronisation des vues
                     avec les données sont garanties.
-
             </li>
             <br>
             <li>
@@ -254,7 +248,12 @@
             </li>
             <br>
             <li>
-                <b>Builder:</b>
+                <b>Builder(constructeur):</b>
+                Le patron du constructeur a été utilisé pour créer les sections des équipements de voyage(avion, train, paquebot).
+                Cette approche permet de créer les espaces de chaque équipement de voyage de manière indépendante et modulaire,respectant ainsi
+                le principe de Responsabilité Unique(SRP) en séparant la création de chaque section. De plus ce patron favorise l'extensibilité 
+                de la création des sections si jamais on veut ajouter de nouveaux types de sections sans modifier les sections existantes et sans 
+                impacter d'autres parties du système, ce qui illustre l'application du principe d'ouverture/fermeture(OCP).
             </li>
             
 
