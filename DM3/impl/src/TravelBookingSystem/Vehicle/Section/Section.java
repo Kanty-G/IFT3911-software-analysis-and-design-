@@ -49,7 +49,7 @@ public class Section implements Serializable, Visitable
     {
         int availableSpaces = 0;
 
-        for (var space : travelSpaces)
+        for (TravelSpace space : travelSpaces)
         {
             if (space.isAvailable())
             {

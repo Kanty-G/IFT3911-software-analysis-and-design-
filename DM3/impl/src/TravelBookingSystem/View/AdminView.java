@@ -2,6 +2,7 @@ package TravelBookingSystem.View;
 
 import TravelBookingSystem.Console.ConsoleUtils;
 import TravelBookingSystem.Controller.AdminController;
+import TravelBookingSystem.Travel.CruiseItinerary;
 import TravelBookingSystem.Travel.Travel;
 import TravelBookingSystem.Travel.Visitor.AdminTravelVisitor;
 import TravelBookingSystem.TravelBookingDatabase;
@@ -498,7 +499,7 @@ public class AdminView implements View
 
     private void printAllCruiseItineraries()
     {
-        var cruiseItineraries = Collections.list(travelBookingDatabase.getAllCruiseItineraries());
+        ArrayList<CruiseItinerary> cruiseItineraries = Collections.list(travelBookingDatabase.getAllCruiseItineraries());
         printTravels(cruiseItineraries);
     }
 
@@ -528,7 +529,7 @@ public class AdminView implements View
     private void printTravels(ArrayList<? extends Travel> travels)
     {
         ArrayList<String> travelStrings = new ArrayList<>();
-        for (var travel : travels)
+        for (Travel travel : travels)
         {
             AdminTravelVisitor visitor = new AdminTravelVisitor();
             visitor.visit(travel);

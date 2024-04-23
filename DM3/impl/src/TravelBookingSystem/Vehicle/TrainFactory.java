@@ -1,6 +1,9 @@
 package TravelBookingSystem.Vehicle;
 
+import TravelBookingSystem.Vehicle.Section.Section;
 import TravelBookingSystem.Vehicle.Section.SectionBuilder;
+
+import java.util.ArrayList;
 
 public class TrainFactory implements TransportVehicleFactory
 {
@@ -18,7 +21,7 @@ public class TrainFactory implements TransportVehicleFactory
 
     public Train createTransportVehicle()
     {
-        var sections = sectionBuilder.getSections();
+        ArrayList<Section> sections = sectionBuilder.getSections();
         return new Train();
     }
 }

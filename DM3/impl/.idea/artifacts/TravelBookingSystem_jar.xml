@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="TravelBookingSystem:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TravelBookingSystem_jar</output-path>
+    <root id="archive" name="TravelBookingSystem.jar">
+      <element id="module-output" name="TravelBookingSystem" />
+    </root>
+  </artifact>
+</component>
