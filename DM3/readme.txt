@@ -3,6 +3,8 @@ Vous pouvez rouler le programme en éxécutant "java -jar TravelBookingSystem.ja
 
 Vous pouvez ensuite suivre les instructions à l'écran.
 
+**Seulement la section Admin est implémenté.**
+
 Vous pouvez consulter les éléments de la base de donnée depuis le menu Admin.
 Par exemple, pour consulter les compagnies aériennes, sélectionnez Admin->Manage Companies->Airport Companies->List.
 
