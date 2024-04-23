@@ -18,13 +18,18 @@ public class ModifyCruiseItineraryCommand implements Command
 
     public void execute()
     {
-
+        System.out.println("Modify CruiseItinerary");
+        ConsoleUtils.WaitForInput();
     }
 
     public void undo()
     {
         if (memento == null)
+        {
+            System.out.println("Restored CruiseItinerary");
+            ConsoleUtils.WaitForInput();
             return;
+        }
 
         travel.restoreFromMemento(memento);
 

@@ -17,13 +17,18 @@ public class ModifyTrainRouteCommand implements Command
 
     public void execute()
     {
-
+        System.out.println("Modified Travel Route");
+        ConsoleUtils.WaitForInput();
     }
 
     public void undo()
     {
         if (memento == null)
+        {
+            System.out.println("Restored Travel Route");
+            ConsoleUtils.WaitForInput();
             return;
+        }
 
         travel.restoreFromMemento(memento);
 

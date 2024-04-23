@@ -1,6 +1,7 @@
 package TravelBookingSystem.Vehicle;
 
 import TravelBookingSystem.Command.Command;
+import TravelBookingSystem.Console.ConsoleUtils;
 
 public class AddAirplaneCommand implements Command
 {
@@ -13,11 +14,13 @@ public class AddAirplaneCommand implements Command
 
     public void execute()
     {
-
+        System.out.println("Added Airplane");
+        ConsoleUtils.WaitForInput();
     }
 
     public void undo()
     {
-
+        System.out.println("Removed Airplane");
+        ConsoleUtils.WaitForInput();
     }
 }

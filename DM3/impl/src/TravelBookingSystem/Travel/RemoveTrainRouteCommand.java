@@ -1,6 +1,7 @@
 package TravelBookingSystem.Travel;
 
 import TravelBookingSystem.Command.Command;
+import TravelBookingSystem.Console.ConsoleUtils;
 
 public class RemoveTrainRouteCommand implements Command
 {
@@ -13,11 +14,13 @@ public class RemoveTrainRouteCommand implements Command
 
     public void execute()
     {
-
+        System.out.println("Removed train route");
+        ConsoleUtils.WaitForInput();
     }
 
     public void undo()
     {
-
+        System.out.println("Added train route");
+        ConsoleUtils.WaitForInput();
     }
 }

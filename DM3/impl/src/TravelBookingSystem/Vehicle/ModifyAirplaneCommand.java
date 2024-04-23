@@ -1,6 +1,7 @@
 package TravelBookingSystem.Vehicle;
 
 import TravelBookingSystem.Command.Command;
+import TravelBookingSystem.Console.ConsoleUtils;
 
 public class ModifyAirplaneCommand implements Command
 {
@@ -13,11 +14,13 @@ public class ModifyAirplaneCommand implements Command
 
     public void execute()
     {
-
+        System.out.println("Modified Airplane");
+        ConsoleUtils.WaitForInput();
     }
 
     public void undo()
     {
-
+        System.out.println("Restored Airplane");
+        ConsoleUtils.WaitForInput();
     }
 }

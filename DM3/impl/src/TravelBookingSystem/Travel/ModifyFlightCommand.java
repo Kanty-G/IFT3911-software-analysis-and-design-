@@ -17,13 +17,18 @@ public class ModifyFlightCommand implements Command
 
     public void execute()
     {
-
+        System.out.println("Modified Flight");
+        ConsoleUtils.WaitForInput();
     }
 
     public void undo()
     {
         if (memento == null)
+        {
+            System.out.println("Restored Flight");
+            ConsoleUtils.WaitForInput();
             return;
+        }
 
         travel.restoreFromMemento(memento);
 
