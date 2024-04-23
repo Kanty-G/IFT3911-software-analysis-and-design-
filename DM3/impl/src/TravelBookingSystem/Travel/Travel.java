@@ -74,6 +74,21 @@ public abstract class Travel implements Serializable, Visitable
         return stopovers;
     }
 
+    public TravelMemento getMemento()
+    {
+        return new TravelMemento(id, companyId, price, departureTime, arrivalTime, transportVehicle, stopovers);
+    }
+
+    public void restoreFromMemento(TravelMemento memento)
+    {
+        this.id = memento.getId();
+        this.companyId = memento.getCompanyId();
+        this.price = memento.getPrice();
+        this.departureTime = memento.getDepartureTime();
+        this.arrivalTime = memento.getArrivalTime();
+        this.stopovers = memento.getStopovers();
+    }
+
     public void accept(TravelVisitor visitor)
     {
         visitor.visit(this);
