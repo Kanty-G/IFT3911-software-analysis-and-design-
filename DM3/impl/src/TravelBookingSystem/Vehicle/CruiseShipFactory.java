@@ -1,8 +1,11 @@
 package TravelBookingSystem.Vehicle;
 
+import TravelBookingSystem.Vehicle.Section.SectionBuilder;
+
 public class CruiseShipFactory implements TransportVehicleFactory
 {
     private static CruiseShipFactory instance;
+    private SectionBuilder sectionBuilder = new SectionBuilder();
 
     public static CruiseShipFactory getInstance()
     {
@@ -14,6 +17,7 @@ public class CruiseShipFactory implements TransportVehicleFactory
 
     public CruiseShip createTransportVehicle()
     {
+        var sections = sectionBuilder.getSections();
         return new CruiseShip();
     }
 }
