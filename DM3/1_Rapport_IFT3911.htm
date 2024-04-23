@@ -215,9 +215,9 @@
                 instance de chaque fabrique (ex: AirportCompanyFactory, CruiseCompanyFactory etc.). Cela 
                 permet d'encapsuler la complexité liée à la création  des objets tout en optimisant la gestion 
                 des ressources et  permet aussi de prévenir les problèmes liés à la gestion des instances.
-                L'utilisation de fabrique facilite l'extension des familles de produits, par exemple pour 
-                ajouter un nouveau type de compagnie il suffirait de l'étendre dans la fabrique de compagnies. 
-                Elle  permet également d'interagir uniquement avec l'interface de la fabrique pour créer des objets, 
+                L'utilisation de fabrique facilite l'extension des familles de produits (OCP), par exemple pour 
+                ajouter un nouveau type de compagnie il suffirait d'étendre sa fabrique dans celle des compagnies. 
+                Elle permet également d'interagir uniquement avec l'interface de la fabrique pour créer des objets, 
                 par exemple pour créer une nouvelle compagnie aérienne, l'admin interagira avec la fabrique des compagnies aériennes.
             </li>
             <br>
@@ -232,7 +232,13 @@
             </li>
             <br>
             <li>
-                <b>Observateur:</b>
+                <b>Observateur:</b> L'application du patron Observateur permet une communication de manière indépendante
+                    entre les objets (AdminView, ClientView et TravelBookingDatabase), ce qui assure un couplage minimal.  
+                    En effet le sujet ignore les détails des observateurs, et ne connait que l'interface commune (DIP).
+                    TravelBookingDatabase permet de maintenir une cohérence entre les différentes vues car lorsqu'un changement se produit il déclenche
+                    automatiquement une notification vers les observateurs inscrits. Ainsi, la mise à jour et la synchronisation des vues
+                    avec les données sont garanties.
+
             </li>
             <br>
             <li>
