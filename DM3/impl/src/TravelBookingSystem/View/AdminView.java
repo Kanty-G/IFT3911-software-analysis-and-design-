@@ -497,7 +497,8 @@ public class AdminView implements View
 
     private void printAllCruiseItineraries()
     {
-        printTravels(Collections.list(travelBookingDatabase.getAllCruiseItineraries()));
+        var cruiseItineraries = Collections.list(travelBookingDatabase.getAllCruiseItineraries());
+        printTravels(cruiseItineraries);
     }
 
     private void printAllTrainRoutes()

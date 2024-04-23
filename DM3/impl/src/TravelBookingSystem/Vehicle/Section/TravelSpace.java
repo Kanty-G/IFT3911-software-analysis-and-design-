@@ -7,7 +7,7 @@ public abstract class TravelSpace implements Serializable
     private static final long serialVersionUID = 1L;
 
     private String id;
-    private TravelSpaceState spaceState = new Available();
+    private transient TravelSpaceState spaceState = new Available();
 
     public TravelSpace() { } // For Serialization
 

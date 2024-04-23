@@ -2,7 +2,6 @@ package TravelBookingSystem.Travel.Visitor;
 
 import TravelBookingSystem.Travel.Travel;
 import TravelBookingSystem.Vehicle.Section.Section;
-import TravelBookingSystem.Vehicle.TransportVehicle;
 
 public class AdminTravelVisitor implements TravelVisitor
 {
