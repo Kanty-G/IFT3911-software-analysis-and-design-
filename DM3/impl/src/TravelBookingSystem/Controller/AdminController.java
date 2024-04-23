@@ -5,8 +5,12 @@ import TravelBookingSystem.Company.*;
 import TravelBookingSystem.Console.ConsoleUtils;
 import TravelBookingSystem.Infrastructure.*;
 import TravelBookingSystem.Travel.*;
+import TravelBookingSystem.Travel.Visitor.AdminTravelVisitor;
 import TravelBookingSystem.Vehicle.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Stack;
 
 public class AdminController
@@ -186,9 +190,30 @@ public class AdminController
         commandHistory.push(command);
     }
 
-    private void searchFlights()
+    public void searchFlightsByAirport()
     {
-        // TODO
+        String id;
+        do
+        {
+            id = ConsoleUtils.RequestNextLine("Enter Departure Airport ID: ");
+        } while (!Infrastructure.isValidId(id));
+
+        var filteredTravels = filterTravelsByDepartureInfrastructure(id, travelService.getAllFlights());
+
+        printTravels(filteredTravels);
+    }
+
+    public void searchFlightsByAirportCompany()
+    {
+        String id;
+        do
+        {
+            id = ConsoleUtils.RequestNextLine("Enter Airport Company ID: ");
+        } while (!Company.isValidId(id));
+
+        var filteredTravel = filterTravelByCompany(id, travelService.getAllFlights());
+
+        printTravels(filteredTravel);
     }
 
     public void addCruiseItinerary()
@@ -212,9 +237,30 @@ public class AdminController
         commandHistory.push(command);
     }
 
-    private void searchCruiseItineraries()
+    public void searchCruiseItinerariesByHarbor()
     {
-        // TODO
+        String id;
+        do
+        {
+            id = ConsoleUtils.RequestNextLine("Enter Departure Harbor ID: ");
+        } while (!Infrastructure.isValidId(id));
+
+        var filteredTravels = filterTravelsByDepartureInfrastructure(id, travelService.getAllCruiseItineraries());
+
+        printTravels(filteredTravels);
+    }
+
+    public void searchCruiseItinerariesByCruiseCompany()
+    {
+        String id;
+        do
+        {
+            id = ConsoleUtils.RequestNextLine("Enter Cruise Company ID: ");
+        } while (!Company.isValidId(id));
+
+        var filteredTravel = filterTravelByCompany(id, travelService.getAllCruiseItineraries());
+
+        printTravels(filteredTravel);
     }
 
     public void addTrainRoute()
@@ -238,9 +284,30 @@ public class AdminController
         commandHistory.push(command);
     }
 
-    private void searchTrainRoutes()
+    public void searchTrainRoutesByTrainStation()
     {
-        // TODO
+        String id;
+        do
+        {
+            id = ConsoleUtils.RequestNextLine("Enter Departure Train Station ID: ");
+        } while (!Infrastructure.isValidId(id));
+
+        var filteredTravels = filterTravelsByDepartureInfrastructure(id, travelService.getAllTrainRoutes());
+
+        printTravels(filteredTravels);
+    }
+
+    public void searchTrainRoutesByTrainCompany()
+    {
+        String id;
+        do
+        {
+            id = ConsoleUtils.RequestNextLine("Enter Train Company ID: ");
+        } while (!Company.isValidId(id));
+
+        var filteredTravel = filterTravelByCompany(id, travelService.getAllTrainRoutes());
+
+        printTravels(filteredTravel);
     }
 
     public void addAirplane()
@@ -304,5 +371,48 @@ public class AdminController
         Command command = new RemoveTrainCommand(transportVehicleService);
         command.execute();
         commandHistory.push(command);
+    }
+
+    private ArrayList<Travel> filterTravelByCompany(String companyId, Enumeration<? extends Travel> travels)
+    {
+        ArrayList<Travel> filteredTravels = new ArrayList<>();
+        while(travels.hasMoreElements())
+        {
+            Travel travel = travels.nextElement();
+            if (travel.getCompanyId().equals(companyId))
+            {
+                filteredTravels.add(travel);
+            }
+        }
+
+        return filteredTravels;
+    }
+
+    private ArrayList<Travel> filterTravelsByDepartureInfrastructure(String departureInfrastructureId, Enumeration<? extends Travel> travels)
+    {
+        ArrayList<Travel> filteredTravels = new ArrayList<>();
+        while(travels.hasMoreElements())
+        {
+            Travel travel = travels.nextElement();
+            if (travel.getDepartureInfrastructure().getId().equals(departureInfrastructureId))
+            {
+                filteredTravels.add(travel);
+            }
+        }
+
+        return filteredTravels;
+    }
+
+    private void printTravels(ArrayList<Travel> travels)
+    {
+        ArrayList<String> travelStrings = new ArrayList<>();
+        for (var travel : travels)
+        {
+            AdminTravelVisitor visitor = new AdminTravelVisitor();
+            visitor.visit(travel);
+            travelStrings.add(visitor.getTravelString());
+        }
+
+        ConsoleUtils.printAllElements(Collections.enumeration(travelStrings));
     }
 }

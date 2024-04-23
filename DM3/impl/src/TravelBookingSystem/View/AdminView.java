@@ -171,9 +171,17 @@ public class AdminView implements View
         manageFlightsMenu.addMenuComponent(new MenuActionItem("Add", this::addFlight));
         manageFlightsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyFlight));
         manageFlightsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteFlight));
-        manageFlightsMenu.addMenuComponent(new MenuActionItem("Search", this::searchFlights));
+        manageFlightsMenu.addMenuComponent(makeSearchFlightsMenu(manageFlightsMenu));
         manageFlightsMenu.addMenuComponent(new MenuActionItem("List", this::printAllFlights));
         return manageFlightsMenu;
+    }
+
+    private Menu makeSearchFlightsMenu(Menu manageFlightsMenu)
+    {
+        Menu searchFlightsMenu = new Menu("Search", manageFlightsMenu);
+        searchFlightsMenu.addMenuComponent(new MenuActionItem("Search by Airport", this::searchFlightsByAirport));
+        searchFlightsMenu.addMenuComponent(new MenuActionItem("Search by Company", this::searchFlightsByAirportCompany));
+        return searchFlightsMenu;
     }
 
     private Menu makeManageCruisesItinerariesMenu(Menu manageTravelsMenu)
@@ -182,9 +190,17 @@ public class AdminView implements View
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Add", this::addCruiseItinerary));
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyCruiseItinerary));
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteCruiseItinerary));
-        manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Search", this::searchCruiseItineraries));
+        manageCruisesItinerariesMenu.addMenuComponent(makeSearchCruisesItinerariesMenu(manageCruisesItinerariesMenu));
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("List", this::printAllCruiseItineraries));
         return manageCruisesItinerariesMenu;
+    }
+
+    private Menu makeSearchCruisesItinerariesMenu(Menu manageFlightsMenu)
+    {
+        Menu searchCruisesItinerariesMenu = new Menu("Search", manageFlightsMenu);
+        searchCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Search by Harbor", this::searchCruiseItinerariesByHarbor));
+        searchCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Search by Company", this::searchCruiseItinerariesByCruiseCompany));
+        return searchCruisesItinerariesMenu;
     }
 
     private Menu makeManageTrainRoutesMenu(Menu manageTravelsMenu)
@@ -193,9 +209,17 @@ public class AdminView implements View
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Add", this::addTrainRoute));
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrainRoute));
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrainRoute));
-        manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Search", this::searchTrainRoutes));
+        manageTrainRoutesMenu.addMenuComponent(makeSearchTrainRoutesMenu(manageTrainRoutesMenu));
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("List", this::printAllTrainRoutes));
         return manageTrainRoutesMenu;
+    }
+
+    private Menu makeSearchTrainRoutesMenu(Menu manageFlightsMenu)
+    {
+        Menu searchTrainRoutesMenu = new Menu("Search", manageFlightsMenu);
+        searchTrainRoutesMenu.addMenuComponent(new MenuActionItem("Search by Train Station", this::searchTrainRoutesByTrainStation));
+        searchTrainRoutesMenu.addMenuComponent(new MenuActionItem("Search by Company", this::searchTrainRoutesByTrainCompany));
+        return searchTrainRoutesMenu;
     }
 
     private Menu makeDatabaseMenu()
@@ -395,19 +419,34 @@ public class AdminView implements View
         adminController.deleteTrain();
     }
 
-    private void searchFlights()
+    private void searchFlightsByAirport()
     {
-        // TODO
+        adminController.searchFlightsByAirport();
     }
 
-    private void searchCruiseItineraries()
+    private void searchFlightsByAirportCompany()
     {
-        // TODO
+        adminController.searchFlightsByAirportCompany();
     }
 
-    private void searchTrainRoutes()
+    private void searchCruiseItinerariesByHarbor()
     {
-        // TODO
+        adminController.searchCruiseItinerariesByHarbor();
+    }
+
+    private void searchCruiseItinerariesByCruiseCompany()
+    {
+        adminController.searchCruiseItinerariesByCruiseCompany();
+    }
+
+    private void searchTrainRoutesByTrainStation()
+    {
+        adminController.searchTrainRoutesByTrainStation();
+    }
+
+    private void searchTrainRoutesByTrainCompany()
+    {
+        adminController.searchTrainRoutesByTrainCompany();
     }
 
     private void printAllAirportCompanies()

@@ -1,5 +1,7 @@
 package TravelBookingSystem.Travel;
 
+import java.util.Enumeration;
+
 public class TravelService
 {
     private TravelDatabase travelDatabase;
@@ -9,48 +11,63 @@ public class TravelService
         this.travelDatabase = travelDatabase;
     }
 
-    public void addFlight()
+    public void addFlight(Flight flight)
     {
-        // TODO
+        travelDatabase.addFlight(flight);
     }
 
-    public void modifyFlight()
+    public void deleteFlight(String id)
     {
-        // TODO
+        travelDatabase.removeFlight(id);
     }
 
-    public void deleteFlight()
+    public Flight getFlight(String id)
     {
-        // TODO
+        return travelDatabase.getFlight(id);
     }
 
-    public void addCruiseItinerary()
+    public Enumeration<Flight> getAllFlights()
     {
-        // TODO
+        return travelDatabase.getAllFlights();
     }
 
-    public void modifyCruiseItinerary()
+    public void addCruiseItinerary(CruiseItinerary cruiseItinerary)
     {
-        // TODO
+        travelDatabase.addCruiseItinerary(cruiseItinerary);
     }
 
-    public void deleteCruiseItinerary()
+    public void deleteCruiseItinerary(String id)
     {
-        // TODO
+        travelDatabase.removeCruiseItinerary(id);
     }
 
-    public void addTrainRoute()
+    public void getCruiseItinerary(String id)
     {
-        // TODO
+        travelDatabase.getCruiseItinerary(id);
     }
 
-    public void modifyTrainRoute()
+    public Enumeration<CruiseItinerary> getAllCruiseItineraries()
     {
-        // TODO
+        return travelDatabase.getAllCruiseItineraries();
     }
 
-    public void deleteTrainRoute()
+    public void addTrainRoute(TrainRoute trainRoute)
     {
-        // TODO
+        travelDatabase.addTrainRoute(trainRoute);
+    }
+
+    public void deleteTrainRoute(String id)
+    {
+        travelDatabase.removeTrainRoute(id);
+    }
+
+    public TrainRoute getTrainRoute(String id)
+    {
+        return travelDatabase.getTrainRoute(id);
+    }
+
+    public Enumeration<TrainRoute> getAllTrainRoutes()
+    {
+        return travelDatabase.getAllTrainRoutes();
     }
 }
