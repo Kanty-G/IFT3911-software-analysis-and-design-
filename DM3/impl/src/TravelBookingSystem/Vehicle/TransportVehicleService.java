@@ -1,5 +1,7 @@
 package TravelBookingSystem.Vehicle;
 
+import java.util.Enumeration;
+
 public class TransportVehicleService
 {
     private TransportVehicleDatabase transportVehicleDatabase;
@@ -9,48 +11,63 @@ public class TransportVehicleService
         this.transportVehicleDatabase = transportVehicleDatabase;
     }
 
-    public void addAirplane()
+    public void addAirplane(Airplane airplane)
     {
-        // TODO
+        transportVehicleDatabase.addAirplane(airplane);
     }
 
-    public void modifyAirplane()
+    public void deleteAirplane(String id)
     {
-        // TODO
+        transportVehicleDatabase.removeAirplane(id);
     }
 
-    public void deleteAirplane()
+    public Airplane getAirplane(String id)
     {
-        // TODO
+        return transportVehicleDatabase.getAirplane(id);
     }
 
-    public void addCruiseShip()
+    public Enumeration<Airplane> getAirplanes()
     {
-        // TODO
+        return transportVehicleDatabase.getAllAirplanes();
     }
 
-    public void modifyCruiseShip()
+    public void addCruiseShip(CruiseShip cruiseShip)
     {
-        // TODO
+        transportVehicleDatabase.addCruiseShip(cruiseShip);
     }
 
-    public void deleteCruiseShip()
+    public void deleteCruiseShip(String id)
     {
-        // TODO
+        transportVehicleDatabase.removeCruiseShip(id);
     }
 
-    public void addTrain()
+    public CruiseShip getCruiseShip(String id)
     {
-        // TODO
+        return transportVehicleDatabase.getCruiseShip(id);
     }
 
-    public void modifyTrain()
+    public Enumeration<CruiseShip> getAllCruiseShips()
     {
-        // TODO
+        return transportVehicleDatabase.getAllCruiseShips();
     }
 
-    public void deleteTrain()
+    public void addTrain(Train train)
     {
-        // TODO
+        transportVehicleDatabase.addTrain(train);
+    }
+
+    public void deleteTrain(String id)
+    {
+        transportVehicleDatabase.removeTrain(id);
+    }
+
+    public Train getTrain(String id)
+    {
+        return transportVehicleDatabase.getTrain(id);
+    }
+
+    public Enumeration<Train> getAllTrains()
+    {
+        return transportVehicleDatabase.getAllTrains();
     }
 }

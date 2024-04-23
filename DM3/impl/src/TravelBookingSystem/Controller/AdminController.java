@@ -190,7 +190,7 @@ public class AdminController
         commandHistory.push(command);
     }
 
-    public void searchFlightsByAirport()
+    public ArrayList<Travel> searchFlightsByAirport()
     {
         String id;
         do
@@ -198,12 +198,10 @@ public class AdminController
             id = ConsoleUtils.RequestNextLine("Enter Departure Airport ID: ");
         } while (!Infrastructure.isValidId(id));
 
-        var filteredTravels = filterTravelsByDepartureInfrastructure(id, travelService.getAllFlights());
-
-        printTravels(filteredTravels);
+        return filterTravelsByDepartureInfrastructure(id, travelService.getAllFlights());
     }
 
-    public void searchFlightsByAirportCompany()
+    public ArrayList<Travel> searchFlightsByAirportCompany()
     {
         String id;
         do
@@ -211,9 +209,7 @@ public class AdminController
             id = ConsoleUtils.RequestNextLine("Enter Airport Company ID: ");
         } while (!Company.isValidId(id));
 
-        var filteredTravel = filterTravelByCompany(id, travelService.getAllFlights());
-
-        printTravels(filteredTravel);
+        return filterTravelByCompany(id, travelService.getAllFlights());
     }
 
     public void addCruiseItinerary()
@@ -237,7 +233,7 @@ public class AdminController
         commandHistory.push(command);
     }
 
-    public void searchCruiseItinerariesByHarbor()
+    public ArrayList<Travel> searchCruiseItinerariesByHarbor()
     {
         String id;
         do
@@ -245,12 +241,10 @@ public class AdminController
             id = ConsoleUtils.RequestNextLine("Enter Departure Harbor ID: ");
         } while (!Infrastructure.isValidId(id));
 
-        var filteredTravels = filterTravelsByDepartureInfrastructure(id, travelService.getAllCruiseItineraries());
-
-        printTravels(filteredTravels);
+        return filterTravelsByDepartureInfrastructure(id, travelService.getAllCruiseItineraries());
     }
 
-    public void searchCruiseItinerariesByCruiseCompany()
+    public ArrayList<Travel> searchCruiseItinerariesByCruiseCompany()
     {
         String id;
         do
@@ -258,9 +252,7 @@ public class AdminController
             id = ConsoleUtils.RequestNextLine("Enter Cruise Company ID: ");
         } while (!Company.isValidId(id));
 
-        var filteredTravel = filterTravelByCompany(id, travelService.getAllCruiseItineraries());
-
-        printTravels(filteredTravel);
+        return filterTravelByCompany(id, travelService.getAllCruiseItineraries());
     }
 
     public void addTrainRoute()
@@ -284,7 +276,7 @@ public class AdminController
         commandHistory.push(command);
     }
 
-    public void searchTrainRoutesByTrainStation()
+    public ArrayList<Travel> searchTrainRoutesByTrainStation()
     {
         String id;
         do
@@ -292,12 +284,10 @@ public class AdminController
             id = ConsoleUtils.RequestNextLine("Enter Departure Train Station ID: ");
         } while (!Infrastructure.isValidId(id));
 
-        var filteredTravels = filterTravelsByDepartureInfrastructure(id, travelService.getAllTrainRoutes());
-
-        printTravels(filteredTravels);
+        return filterTravelsByDepartureInfrastructure(id, travelService.getAllTrainRoutes());
     }
 
-    public void searchTrainRoutesByTrainCompany()
+    public ArrayList<Travel> searchTrainRoutesByTrainCompany()
     {
         String id;
         do
@@ -305,9 +295,7 @@ public class AdminController
             id = ConsoleUtils.RequestNextLine("Enter Train Company ID: ");
         } while (!Company.isValidId(id));
 
-        var filteredTravel = filterTravelByCompany(id, travelService.getAllTrainRoutes());
-
-        printTravels(filteredTravel);
+        return filterTravelByCompany(id, travelService.getAllTrainRoutes());
     }
 
     public void addAirplane()
@@ -401,18 +389,5 @@ public class AdminController
         }
 
         return filteredTravels;
-    }
-
-    private void printTravels(ArrayList<Travel> travels)
-    {
-        ArrayList<String> travelStrings = new ArrayList<>();
-        for (var travel : travels)
-        {
-            AdminTravelVisitor visitor = new AdminTravelVisitor();
-            visitor.visit(travel);
-            travelStrings.add(visitor.getTravelString());
-        }
-
-        ConsoleUtils.printAllElements(Collections.enumeration(travelStrings));
     }
 }

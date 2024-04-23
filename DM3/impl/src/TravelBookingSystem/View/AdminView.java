@@ -2,10 +2,15 @@ package TravelBookingSystem.View;
 
 import TravelBookingSystem.Console.ConsoleUtils;
 import TravelBookingSystem.Controller.AdminController;
+import TravelBookingSystem.Travel.Travel;
+import TravelBookingSystem.Travel.Visitor.AdminTravelVisitor;
 import TravelBookingSystem.TravelBookingDatabase;
 import TravelBookingSystem.TravelBookingSystem;
 import TravelBookingSystem.Menu.Menu;
 import TravelBookingSystem.Menu.MenuActionItem;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class AdminView implements View
 {
@@ -421,32 +426,32 @@ public class AdminView implements View
 
     private void searchFlightsByAirport()
     {
-        adminController.searchFlightsByAirport();
+        printTravels(adminController.searchFlightsByAirport());
     }
 
     private void searchFlightsByAirportCompany()
     {
-        adminController.searchFlightsByAirportCompany();
+        printTravels(adminController.searchFlightsByAirportCompany());
     }
 
     private void searchCruiseItinerariesByHarbor()
     {
-        adminController.searchCruiseItinerariesByHarbor();
+        printTravels(adminController.searchCruiseItinerariesByHarbor());
     }
 
     private void searchCruiseItinerariesByCruiseCompany()
     {
-        adminController.searchCruiseItinerariesByCruiseCompany();
+        printTravels(adminController.searchCruiseItinerariesByCruiseCompany());
     }
 
     private void searchTrainRoutesByTrainStation()
     {
-        adminController.searchTrainRoutesByTrainStation();
+        printTravels(adminController.searchTrainRoutesByTrainStation());
     }
 
     private void searchTrainRoutesByTrainCompany()
     {
-        adminController.searchTrainRoutesByTrainCompany();
+        printTravels(adminController.searchTrainRoutesByTrainCompany());
     }
 
     private void printAllAirportCompanies()
@@ -487,20 +492,17 @@ public class AdminView implements View
 
     private void printAllFlights()
     {
-        ConsoleUtils.printAllElements(travelBookingDatabase.getAllFlights());
-        ConsoleUtils.WaitForInput();
+        printTravels(Collections.list(travelBookingDatabase.getAllFlights()));
     }
 
     private void printAllCruiseItineraries()
     {
-        ConsoleUtils.printAllElements(travelBookingDatabase.getAllCruiseItineraries());
-        ConsoleUtils.WaitForInput();
+        printTravels(Collections.list(travelBookingDatabase.getAllCruiseItineraries()));
     }
 
     private void printAllTrainRoutes()
     {
-        ConsoleUtils.printAllElements(travelBookingDatabase.getAllTrainRoutes());
-        ConsoleUtils.WaitForInput();
+        printTravels(Collections.list(travelBookingDatabase.getAllTrainRoutes()));
     }
 
     private void printAllAirplanes()
@@ -518,6 +520,20 @@ public class AdminView implements View
     private void printAllTrains()
     {
         ConsoleUtils.printAllElements(travelBookingDatabase.getAllTrains());
+        ConsoleUtils.WaitForInput();
+    }
+
+    private void printTravels(ArrayList<? extends Travel> travels)
+    {
+        ArrayList<String> travelStrings = new ArrayList<>();
+        for (var travel : travels)
+        {
+            AdminTravelVisitor visitor = new AdminTravelVisitor();
+            visitor.visit(travel);
+            travelStrings.add(visitor.getTravelString());
+        }
+
+        ConsoleUtils.printAllElements(Collections.enumeration(travelStrings));
         ConsoleUtils.WaitForInput();
     }
 }
