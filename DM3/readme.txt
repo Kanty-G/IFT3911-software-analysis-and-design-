@@ -1,6 +1,9 @@
-Pour compliler le code il faaut se positionner dasn le fichier source : DM3/Impl/src
-et compliler le fichier Main.java en faisant  javac Main.java à partir du terminal 
-ou directement sur n'importe quel IDE
+Le projet a été compilé pour Java 1.8
+Vous pouvez rouler le programme en éxécutant "java -jar TravelBookingSystem.jar" depuis le dossier DM3/TravelBookingSystem.
 
-Pour l'exécuter  vous pouvez faire : java Main.java à partir du terminal ou  l'exécuter directeemnt sur votre IDE.
-Et de là il y a un menu détaillé qui va vou guider lors de votre navigation dans le système.
+Vous pouvez ensuite suivre les instructions à l'écran.
+
+Vous pouvez consulter les éléments de la base de donnée depuis le menu Admin.
+Par exemple, pour consulter les compagnies aériennes, sélectionnez Admin->Manage Companies->Airport Companies->List.
+
+Pour réinitialiser la base de donnée, vous pouvez aller dans Admin->Manage Database->Reset Database.
