@@ -230,6 +230,7 @@ public class AdminView implements View
     private Menu makeDatabaseMenu()
     {
         Menu databaseMenu = new Menu("Manage Database", adminMenu);
+        databaseMenu.addMenuComponent(new MenuActionItem("Reset Database", travelBookingDatabase::resetDatabase));
         databaseMenu.addMenuComponent(new MenuActionItem("Clear Database", travelBookingDatabase::clearDatabase));
         return databaseMenu;
     }

@@ -22,6 +22,7 @@ public class TravelBookingDatabase implements Serializable, Subject,
         ReservationDatabase, PaymentDatabase
 {
     private static final String databaseFilePath = "./database.data";
+    private static final String backupFilePath = "./backup.data";
     private static final long serialVersionUID = 1L;
 
     private final transient ArrayList<Observer> observers = new ArrayList<>();
@@ -74,6 +75,38 @@ public class TravelBookingDatabase implements Serializable, Subject,
     {
         TravelBookingDatabase database = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(databaseFilePath)))
+        {
+            database = (TravelBookingDatabase) ois.readObject();
+        }
+        catch (FileNotFoundException fileNotFoundException)
+        {
+            System.out.println("Couldn't find database file. Generating new one.");
+            saveDatabase();
+            return;
+        }
+        catch (EOFException eofException)
+        {
+            // End of file reached
+        }
+        catch (ClassNotFoundException | IOException exception)
+        {
+            exception.printStackTrace();
+            return;
+        }
+
+        if (database == null)
+        {
+            System.out.println("ERROR: Couldn't load database from file.");
+            return;
+        }
+
+        setTables(database);
+    }
+
+    public void resetDatabase()
+    {
+        TravelBookingDatabase database = null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(backupFilePath)))
         {
             database = (TravelBookingDatabase) ois.readObject();
         }
