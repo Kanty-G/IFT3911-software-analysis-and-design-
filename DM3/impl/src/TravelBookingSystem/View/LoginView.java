@@ -29,15 +29,7 @@ public class LoginView implements View
     private void initializeLogInMenu()
     {
         loginMenu.addMenuComponent(new MenuActionItem("Client", this::loginClient));
-        loginMenu.addMenuComponent(makeAdminMenu());
-    }
-
-    private Menu makeAdminMenu()
-    {
-        Menu adminMenu = new Menu("Admin", loginMenu);
-        adminMenu.addMenuComponent(new MenuActionItem("Log In", this::loginAdmin));
-        adminMenu.addMenuComponent(new MenuActionItem("New Admin", this::createAdmin));
-        return adminMenu;
+        loginMenu.addMenuComponent(new MenuActionItem("Admin", this::loginAdmin));
     }
 
     private void loginClient()

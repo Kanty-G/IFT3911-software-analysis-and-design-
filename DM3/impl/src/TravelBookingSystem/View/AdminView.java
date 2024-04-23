@@ -9,7 +9,6 @@ import TravelBookingSystem.Menu.MenuActionItem;
 
 public class AdminView implements View
 {
-    // TODO: Remove and replace with a DataExplorer using a visitor
     private final TravelBookingDatabase travelBookingDatabase;
 
     private final AdminController adminController;
@@ -58,6 +57,7 @@ public class AdminView implements View
         manageAirportCompaniesMenu.addMenuComponent(new MenuActionItem("Add", this::addAirportCompany));
         manageAirportCompaniesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyAirportCompany));
         manageAirportCompaniesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteAirportCompany));
+        manageAirportCompaniesMenu.addMenuComponent(new MenuActionItem("List", this::printAllAirportCompanies));
         return manageAirportCompaniesMenu;
     }
 
@@ -67,6 +67,7 @@ public class AdminView implements View
         manageCruiseCompaniesMenu.addMenuComponent(new MenuActionItem("Add", this::addCruiseCompany));
         manageCruiseCompaniesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyCruiseCompany));
         manageCruiseCompaniesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteCruiseCompany));
+        manageCruiseCompaniesMenu.addMenuComponent(new MenuActionItem("List", this::printAllCruiseCompanies));
         return manageCruiseCompaniesMenu;
     }
 
@@ -76,6 +77,7 @@ public class AdminView implements View
         manageTrainCompaniesMenu.addMenuComponent(new MenuActionItem("Add", this::addTrainCompany));
         manageTrainCompaniesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrainCompany));
         manageTrainCompaniesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrainCompany));
+        manageTrainCompaniesMenu.addMenuComponent(new MenuActionItem("List", this::printAllTrainCompanies));
         return manageTrainCompaniesMenu;
     }
 
@@ -93,6 +95,7 @@ public class AdminView implements View
         manageAirportsMenu.addMenuComponent(new MenuActionItem("Add", this::addAirport));
         manageAirportsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyAirport));
         manageAirportsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteAirport));
+        manageAirportsMenu.addMenuComponent(new MenuActionItem("List", this::printAllAirports));
         return manageAirportsMenu;
     }
 
@@ -102,6 +105,7 @@ public class AdminView implements View
         manageHarborsMenu.addMenuComponent(new MenuActionItem("Add", this::addHarbor));
         manageHarborsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyHarbor));
         manageHarborsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteHarbor));
+        manageHarborsMenu.addMenuComponent(new MenuActionItem("List", this::printAllHarbors));
         return manageHarborsMenu;
     }
 
@@ -111,6 +115,7 @@ public class AdminView implements View
         manageTrainStationsMenu.addMenuComponent(new MenuActionItem("Add", this::addTrainStation));
         manageTrainStationsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrainStation));
         manageTrainStationsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrainStation));
+        manageTrainStationsMenu.addMenuComponent(new MenuActionItem("List", this::printAllTrainStations));
         return manageTrainStationsMenu;
     }
 
@@ -128,6 +133,7 @@ public class AdminView implements View
         manageAirplanesMenu.addMenuComponent(new MenuActionItem("Add", this::addAirplane));
         manageAirplanesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyAirplane));
         manageAirplanesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteAirplane));
+        manageAirplanesMenu.addMenuComponent(new MenuActionItem("List", this::printAllAirplanes));
         return manageAirplanesMenu;
     }
 
@@ -137,6 +143,7 @@ public class AdminView implements View
         manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("Add", this::addCruiseShip));
         manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyCruiseShip));
         manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteCruiseShip));
+        manageCruiseShipsMenu.addMenuComponent(new MenuActionItem("List", this::printAllCruiseShips));
         return manageCruiseShipsMenu;
     }
 
@@ -146,6 +153,7 @@ public class AdminView implements View
         manageTrainsMenu.addMenuComponent(new MenuActionItem("Add", this::addTrain));
         manageTrainsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrain));
         manageTrainsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrain));
+        manageTrainsMenu.addMenuComponent(new MenuActionItem("List", this::printAllTrains));
         return manageTrainsMenu;
     }
 
@@ -163,6 +171,8 @@ public class AdminView implements View
         manageFlightsMenu.addMenuComponent(new MenuActionItem("Add", this::addFlight));
         manageFlightsMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyFlight));
         manageFlightsMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteFlight));
+        manageFlightsMenu.addMenuComponent(new MenuActionItem("Search", this::searchFlights));
+        manageFlightsMenu.addMenuComponent(new MenuActionItem("List", this::printAllFlights));
         return manageFlightsMenu;
     }
 
@@ -172,6 +182,8 @@ public class AdminView implements View
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Add", this::addCruiseItinerary));
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyCruiseItinerary));
         manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteCruiseItinerary));
+        manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("Search", this::searchCruiseItineraries));
+        manageCruisesItinerariesMenu.addMenuComponent(new MenuActionItem("List", this::printAllCruiseItineraries));
         return manageCruisesItinerariesMenu;
     }
 
@@ -181,33 +193,16 @@ public class AdminView implements View
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Add", this::addTrainRoute));
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Modify", this::modifyTrainRoute));
         manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Delete", this::deleteTrainRoute));
+        manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("Search", this::searchTrainRoutes));
+        manageTrainRoutesMenu.addMenuComponent(new MenuActionItem("List", this::printAllTrainRoutes));
         return manageTrainRoutesMenu;
     }
 
     private Menu makeDatabaseMenu()
     {
         Menu databaseMenu = new Menu("Manage Database", adminMenu);
-        databaseMenu.addMenuComponent(makeCheckDatabaseMenu(databaseMenu));
         databaseMenu.addMenuComponent(new MenuActionItem("Clear Database", travelBookingDatabase::clearDatabase));
         return databaseMenu;
-    }
-
-    private Menu makeCheckDatabaseMenu(Menu databaseMenu)
-    {
-        Menu checkDatabaseMenu = new Menu("Explore Data", databaseMenu);
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airport Companies", this::printAllAirportCompanies));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Companies", this::printAllCruiseCompanies));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Companies", this::printAllTrainCompanies));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airports", this::printAllAirports));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Harbors", this::printAllHarbors));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Stations", this::printAllTrainStations));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Flights", this::printAllFlights));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Itineraries", this::printAllCruiseItineraries));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Train Routes", this::printAllTrainRoutes));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Airplanes", this::printAllAirplanes));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Cruise Ships", this::printAllCruiseShips));
-        checkDatabaseMenu.addMenuComponent(new MenuActionItem("Trains", this::printAllTrains));
-        return checkDatabaseMenu;
     }
 
     private void exit()
@@ -398,6 +393,21 @@ public class AdminView implements View
     private void deleteTrain()
     {
         adminController.deleteTrain();
+    }
+
+    private void searchFlights()
+    {
+        // TODO
+    }
+
+    private void searchCruiseItineraries()
+    {
+        // TODO
+    }
+
+    private void searchTrainRoutes()
+    {
+        // TODO
     }
 
     private void printAllAirportCompanies()

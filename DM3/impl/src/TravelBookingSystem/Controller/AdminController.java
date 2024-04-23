@@ -4,8 +4,8 @@ import TravelBookingSystem.Command.Command;
 import TravelBookingSystem.Company.*;
 import TravelBookingSystem.Console.ConsoleUtils;
 import TravelBookingSystem.Infrastructure.*;
-import TravelBookingSystem.Travel.TravelService;
-import TravelBookingSystem.Vehicle.TransportVehicleService;
+import TravelBookingSystem.Travel.*;
+import TravelBookingSystem.Vehicle.*;
 
 import java.util.Stack;
 
@@ -167,109 +167,142 @@ public class AdminController
 
     public void addFlight()
     {
-        // TODO: Convert to command
-        travelService.addFlight();
+        Command command = new AddFlightCommand(travelService, transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyFlight()
     {
-        // TODO: Convert to command
-        travelService.modifyFlight();
+        Command command = new ModifyFlightCommand(travelService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteFlight()
     {
-        // TODO: Convert to command
-        travelService.deleteFlight();
+        Command command = new RemoveFlightCommand(travelService);
+        command.execute();
+        commandHistory.push(command);
+    }
+
+    private void searchFlights()
+    {
+        // TODO
     }
 
     public void addCruiseItinerary()
     {
-        // TODO: Convert to command
-        travelService.addCruiseItinerary();
+        Command command = new AddCruiseItineraryCommand(travelService, transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyCruiseItinerary()
     {
-        // TODO: Convert to command
-        travelService.modifyCruiseItinerary();
+        Command command = new ModifyCruiseItineraryCommand(travelService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteCruiseItinerary()
     {
-        // TODO: Convert to command
-        travelService.deleteCruiseItinerary();
+        Command command = new RemoveCruiseItineraryCommand(travelService);
+        command.execute();
+        commandHistory.push(command);
+    }
+
+    private void searchCruiseItineraries()
+    {
+        // TODO
     }
 
     public void addTrainRoute()
     {
-        // TODO: Convert to command
-        travelService.addTrainRoute();
+        Command command = new AddTrainRouteCommand(travelService, transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyTrainRoute()
     {
-        // TODO: Convert to command
-        travelService.modifyTrainRoute();
+        Command command = new ModifyTrainRouteCommand(travelService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteTrainRoute()
     {
-        // TODO: Convert to command
-        travelService.deleteTrainRoute();
+        Command command = new RemoveTrainRouteCommand(travelService);
+        command.execute();
+        commandHistory.push(command);
+    }
+
+    private void searchTrainRoutes()
+    {
+        // TODO
     }
 
     public void addAirplane()
     {
-        // TODO: Convert to command
-        transportVehicleService.addAirplane();
+        Command command = new AddAirplaneCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyAirplane()
     {
-        // TODO: Convert to command
-        transportVehicleService.modifyAirplane();
+        Command command = new ModifyAirplaneCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteAirplane()
     {
-        // TODO: Convert to command
-        transportVehicleService.deleteAirplane();
+        Command command = new RemoveAirplaneCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addCruiseShip()
     {
-        // TODO: Convert to command
-        transportVehicleService.addCruiseShip();
+        Command command = new AddCruiseShipCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyCruiseShip()
     {
-        // TODO: Convert to command
-        transportVehicleService.modifyCruiseShip();
+        Command command = new ModifyCruiseShipCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteCruiseShip()
     {
-        // TODO: Convert to command
-        transportVehicleService.deleteCruiseShip();
+        Command command = new RemoveCruiseShipCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void addTrain()
     {
-        // TODO: Convert to command
-        transportVehicleService.addTrain();
+        Command command = new AddTrainCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void modifyTrain()
     {
-        // TODO: Convert to command
-        transportVehicleService.modifyTrain();
+        Command command = new ModifyTrainCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 
     public void deleteTrain()
     {
-        // TODO: Convert to command
-        transportVehicleService.deleteTrain();
+        Command command = new RemoveTrainCommand(transportVehicleService);
+        command.execute();
+        commandHistory.push(command);
     }
 }
