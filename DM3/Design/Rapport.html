@@ -219,9 +219,9 @@
             <li>
                 <b>État:</b>
                 L'utilisation du patron d'état dans la gestion des disponiblités des sièges ou cabines offre une conception
-                modulaire et extensible en séparant les comportements propres à chaque état. Cette approche facilite la maintenance et
-                l'ajout de nouveaux états sans affecter d'autres parties du système, par exemple si on veut ajouter un autre état pour les 
-                sièges il suffit d'ajouter une nouvelle classe et définir les comportements associés à cet état. De plus ce patron favorise
+                modulaire et extensible en séparant les comportements propres à chaque état, ce qui minimise le couplage entre les états .
+                Cette approche facilite la maintenance et l'ajout de nouveaux états sans affecter d'autres parties du système, par exemple
+                si on veut ajouter un autre état pour les sièges il suffit d'ajouter une nouvelle classe et définir les comportements associés à cet état. De plus ce patron favorise
                 la reutilisabilité du code dans d'autres contextes similiaires.
                
             </li>
@@ -242,12 +242,16 @@
                 Il permet d'encapsuler les actions dans des objets de commande distincts, facilitant ainsi leur exécution, annulation et de stockage.
                 De plus, ce dernier favorise l'ajout de nouvelles commandes sans nécessiter de modifications du code existant (OCP). L'intéraction entre le controlleur admin
                 et les commandes se fait à travers une interface (DIP).
-
             </li>
             <br>
             <li>
                 <b>Visiteur:</b>
-            </li>
+                Le patron du visiteur permet  de séparer la logique d'affichage des entités d'un voyage d'une classe à une autre, ce qui rennd le système plus claire
+                Il facilite également la séparation des préoccupations (SRP) pour permettre à différents visiteurs ici administrateur ou client d'exécuter des opérations 
+                distinctes sur  les entités de voyage sans modifier leur structure. Et aussi les classes concrètes de visiteurs  AdminTravelVisitor et ClientTravelVisitor
+                dépendent des interfaces déclarant les méthodes de visite, ce qui assure un faible couplage, donc une bonne applicatiom du principe d'inversion de Dépendance(DIP)
+
+
             <br>
             <li>
                 <b>Memento:</b>
