@@ -206,7 +206,7 @@
         <ul>
             <li>
                 <b>Factory/ Singleton:</b>
-                le patron de  fabrique est utilisée avec le singleton de sorte qu'il y ait qu'une seule 
+                le patron de  fabrique est utilisé avec le singleton de sorte qu'il y ait qu'une seule 
                 instance de chaque fabrique (ex: AirportCompanyFactory, CruiseCompanyFactory etc.). Cela 
                 permet d'encapsuler la complexité liée à la création  des objets tout en optimisant la gestion 
                 des ressources et  permet aussi de prévenir les problèmes liés à la gestion des instances.
@@ -227,16 +227,22 @@
             </li>
             <br>
             <li>
-                <b>Observateur:</b> L'application du patron Observateur permet une communication de manière indépendante
-                    entre les objets (AdminView, ClientView et TravelBookingDatabase), ce qui assure un couplage minimal.  
-                    En effet le sujet ignore les détails des observateurs, et ne connait que l'interface commune (DIP).
-                    TravelBookingDatabase permet de maintenir une cohérence entre les différentes vues car lorsqu'un changement se produit il déclenche
-                    automatiquement une notification vers les observateurs inscrits. Ainsi, la mise à jour et la synchronisation des vues
-                    avec les données sont garanties.
+                <b>Observateur:</b> 
+                L'application du patron Observateur permet une communication de manière indépendante
+                entre les objets (AdminView, ClientView et TravelBookingDatabase), ce qui assure un couplage minimal.  
+                En effet le sujet ignore les détails des observateurs, et ne connait que l'interface commune (DIP).
+                TravelBookingDatabase permet de maintenir une cohérence entre les différentes vues car lorsqu'un changement se produit il déclenche
+                automatiquement une notification vers les observateurs inscrits. Ainsi, la mise à jour et la synchronisation des vues
+                avec les données sont garanties.
             </li>
             <br>
             <li>
                 <b>Commande:</b>
+                L'application du patron Commande a été utiliser pour gérer les opérations de l'administrateur.
+                Il permet d'encapsuler les actions dans des objets de commande distincts, facilitant ainsi leur exécution, annulation et de stockage.
+                De plus, ce dernier favorise l'ajout de nouvelles commandes sans nécessiter de modifications du code existant (OCP). L'intéraction entre le controlleur admin
+                et les commandes se fait à travers une interface (DIP).
+
             </li>
             <br>
             <li>
@@ -245,6 +251,14 @@
             <br>
             <li>
                 <b>Memento:</b>
+                L'utilisation du patron Memento nous permet de sauvegarder l'état des objets avant leur modifications.
+                Ainsi, lorsqu'une action est faite et que l'on souhaite annuler, il sera possible d'utiliser le 'undo'
+                pour revenir à état précédent. par exemple la commande 'ModifyAirportCompanyCommand' est utilisée pour apporter des changements 
+                à une compagnie aérienne (forte cohésion assurée), si nous décidons de modifier une compagnie il nous sera possible d'annuler les changements grâce à
+                CompanyMomento, qui est la classe spécialisé dans cette tâche de mémorisation et réstauration (SRP). Nous pouvons remarquer que le faible couplage est aussi assuré car 
+                CompanyMemento n'a pas besoin de connaitre les détails de la logique de AirportCompany
+                
+
             </li>
             <br>
             <li>
