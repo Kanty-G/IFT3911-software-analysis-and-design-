@@ -1,0 +1,1 @@
+DM1 and DM3 are based on a project for implementing a travel reservation application. The first phase involves designing UML diagrams, and the final part is the implementation of the application, adhering to design patterns for better software structure. DM2 is aimed at deepening knowledge about Petri nets and statecharts.
